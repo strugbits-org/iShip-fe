@@ -18,7 +18,7 @@ export { List };
 function List() {
     const users = useSelector(x => x.users.list);
     const dispatch = useDispatch();
-
+    console.log("asd", useSelector(x => x.users.list));
     useEffect(() => {
         dispatch(userActions.getAll());
     }, []);
@@ -31,11 +31,11 @@ function List() {
         { title: "Schindler's List", year: 1993 },
         { title: 'Pulp Fiction', year: 1994 },
     ]
-    const userData = users?.value?.map(data => { return { "id": data.id, "fullname":`${data.firtname}${data.lastname}`, "email": data.email, "phone": 35 } })
-    console.log(userData);
-    const rows = [
-        { id: 1, fullname: 'Snow', email: 'Jon', phone: 35 },
-    ]
+    const rows = []
+    const userData = users?.value?.map(data => {
+        return rows.push({ "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": 35 })
+    })
+    console.log("userData", userData);
     const columns = [
         {
             field: 'id', headerName: 'Merchant ID #', flex: 1,
