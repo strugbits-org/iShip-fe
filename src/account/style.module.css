@@ -1,0 +1,133 @@
+/* loginpage Custom */
+.auth_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth_section {
+    width: 40%;
+    max-width: 550px;
+    margin: auto;
+}
+
+.auth_content_wrapper {
+    width: 90%;
+    margin: auto;
+}
+
+.auth_image_section {
+    width: 60%;
+}
+
+.image_full {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.theme_btn {
+    background-color: var(--primaryColor);
+    font-family: AxiformaMedium;
+    padding: 15px 0;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    color: var(--textHeadingWhite);
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.theme_input {
+    border: 1px solid rgb(157 157 157 / 50%);
+    border-radius: 5px;
+    padding: 14px 20px;
+    background-color: var(--textLight);
+    color: var(--inputColor);
+    font-family: AxiformaMedium;
+    font-size: 18px;
+}
+
+.theme_input::placeholder {
+    font-size: 16px;
+    color: var(--inputColor);
+    font-family: Axiformalight;
+}
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.theme_input:focus {
+    border-color: var(--primaryColor) !important;
+}
+
+.auth_title {
+    font-size: 40px;
+    font-family: AxiformaBold;
+}
+
+.aut_subtitle {
+    font-size: 18px;
+    font-family: AxiformaRegular;
+    color: var(--textHeadingBlack);
+    margin-bottom: 50px;
+}
+
+.input_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_row .input_wrapper {
+    width: 48%;
+}
+.auth_link{
+    display: flex;
+    justify-content: center;
+    color: var(--textHeadingBlack);
+    font-size: 18px;
+    font-family: AxiformaMedium;    
+}
+.auth_link a {
+    color: var(--primaryColor);
+    font-size: 18px;
+    font-family: AxiformaMedium;
+}
+.auth_forget{
+    margin-bottom: 40px;
+    display: flex;
+}
+.auth_forget a {
+    font-family: AxiformaMedium;
+    font-size: 18px;
+    color: var(--textDard);
+
+}
+.invalid_feedback{
+    color:var(--error);
+    font-size:14px;
+    font-family: AxiformaRegular;
+}
+
+/* laptop styling */
+@media (max-width: 991px) {
+    .auth_image_section {
+        display: none;
+    }
+
+    .auth_content {
+        height: 100vh;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./signinBg.png');
+    }
+
+    .auth_section {
+        width: 90%;
+        background-color: var(--textHeadingWhite);
+        border-radius: 10px;
+        padding: 20px;
+    }
+}
