@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
+import Style from './style.module.css';
 
 import { history } from '_helpers';
 import { userActions, alertActions } from '_store';
@@ -22,7 +23,7 @@ function AddEdit() {
             .required('First Name is required'),
         lastName: Yup.string()
             .required('Last Name is required'),
-        username: Yup.string()
+        email: Yup.string()
             .required('Username is required'),
         password: Yup.string()
             .transform(x => x === '' ? undefined : x)
@@ -70,8 +71,9 @@ function AddEdit() {
     }
 
     return (
-        <>
-            <h1>{title}</h1>
+        <div className={Style.sections}>
+            <div className={Style.main_container}>
+            <h1 className={Style.title}>{title}</h1>
             {!(user?.loading || user?.error) &&
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="row">
@@ -89,7 +91,7 @@ function AddEdit() {
                     <div className="row">
                         <div className="mb-3 col">
                             <label className="form-label">Username</label>
-                            <input name="username" type="text" {...register('username')} className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
+                            <input name="email" type="text" {...register('email')} className={`form-control ${errors.email ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.username?.message}</div>
                         </div>
                         <div className="mb-3 col">
@@ -121,6 +123,7 @@ function AddEdit() {
                     <div class="text-danger">Error loading user: {user.error}</div>
                 </div>
             }
-        </>
+            </div>
+            </div>
     );
 }

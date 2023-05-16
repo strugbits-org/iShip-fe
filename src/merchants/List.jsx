@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Style from './style.module.css'
+import Style from './style.module.css';
 import AddIcon from '@mui/icons-material/Add';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';

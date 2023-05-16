@@ -198,3 +198,15 @@ a.menu_item_wrapper.active{
 fieldset.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
     border: none;
 }
+
+/* //ALERT  */
+.alert.alert-dismissible {position: fixed;background: #ff9400;height: 60px;box-shadow: -5px 3px 9px 9px #00000012;top: 10px;color: #fff;right: 50%;transform: translateX(50%);min-width: 300px;display: flex;justify-content: center;align-items: center;border-radius: 5px;}
+
+button.btn-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border: navajowhite;
+}

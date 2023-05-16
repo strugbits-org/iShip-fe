@@ -21,26 +21,10 @@ function Alert() {
 
     return (
         <div className="container">
-            {/* <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
-            {toast.success("Error Notification !", {
-                position: toast.POSITION.TOP_LEFT
-            })}
-            <ToastContainer /> */}
             <div className="m-3">
                 <div className={`alert alert-dismissible ${alert.type}`}>
                     {alert.message}
-                    <button type="button" className="btn-close" onClick={() => dispatch(alertActions.clear())}></button>
+                    <button type="button" className="btn-close" onClick={() => dispatch(alertActions.clear())}>X</button>
                 </div>
             </div>
         </div>
