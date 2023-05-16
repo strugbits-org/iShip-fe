@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,14 +9,77 @@ import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import PropTypes from 'prop-types';
+import Backdrop from '@mui/material/Backdrop';
+import Modal from '@mui/material/Modal';
+import CloseIcon from '@mui/icons-material/Close';
+// import Typography from '@mui/material/Typography';
+import { useSpring, animated } from '@react-spring/web';
+import { AddEdit } from './AddEdit';
+
 
 
 
 import { userActions } from '_store';
 
 export { List };
+const Fade = React.forwardRef(function Fade(props, ref) {
+    const {
+        children,
+        in: open,
+        onClick,
+        onEnter,
+        onExited,
+        ownerState,
+        ...other
+    } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        onStart: () => {
+            if (open && onEnter) {
+                onEnter(null, true);
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+                onExited(null, true);
+            }
+        },
+    });
+
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {React.cloneElement(children, { onClick })}
+        </animated.div>
+    );
+});
+Fade.propTypes = {
+    children: PropTypes.element.isRequired,
+    in: PropTypes.bool,
+    onClick: PropTypes.any,
+    onEnter: PropTypes.func,
+    onExited: PropTypes.func,
+    ownerState: PropTypes.any,
+};
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 750,
+    borderRadius: "15px",
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+};
 
 function List() {
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     const users = useSelector(x => x.users.list);
     const dispatch = useDispatch();
     console.log("asd", useSelector(x => x.users.list));
@@ -93,7 +157,8 @@ function List() {
                             <div className={Style.serach_box}>
                                 <SearchIcon className={Style.search_icons} /></div>
                         </div>
-                        <Link to="add" className={Style.add_merchant}>
+                        {/* <Button to="add" >Open modal</Button> */}
+                        <Link onClick={handleOpen} className={Style.add_merchant}>
                             <AddIcon color='#fff' />
                             <span className={Style.link}>Add new merchants</span>
                         </Link>
@@ -117,43 +182,29 @@ function List() {
                             disableRowSelectionOnClick
                         />
                     </Box>
-                    {/* <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style={{ width: '30%' }}>First Name</th>
-                            <th style={{ width: '30%' }}>Last Name</th>
-                            <th style={{ width: '30%' }}>Username</th>
-                            <th style={{ width: '10%' }}></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {users?.value?.map(user =>
-                            <tr key={user.id}>
-                                <td>{user.firstName}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.username}</td>
-                                <td style={{ whiteSpace: 'nowrap' }}>
-                                    <Link to={`edit/${user.id}`} className="btn btn-sm btn-primary me-1">Edit</Link>
-                                    <button onClick={() => dispatch(userActions.delete(user.id))} className="btn btn-sm btn-danger" style={{ width: '60px' }} disabled={user.isDeleting}>
-                                        {user.isDeleting
-                                            ? <span className="spinner-border spinner-border-sm"></span>
-                                            : <span>Delete</span>
-                                        }
-                                    </button>
-                                </td>
-                            </tr>
-                        )}
-                        {users?.loading &&
-                            <tr>
-                                <td colSpan="4" className="text-center">
-                                    <span className="spinner-border spinner-border-lg align-center"></span>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table> */}
                 </div>
             </div>
+            <Modal
+                aria-labelledby="spring-modal-title"
+                aria-describedby="spring-modal-description"
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                    backdrop: {
+                        TransitionComponent: Fade,
+                    },
+                }}
+            >
+                <Fade in={open}>
+                    <Box sx={style}>
+                        <CloseIcon className={Style.closeBtn} onClick={handleClose} />
+                        <AddEdit />
+                    </Box>
+
+                </Fade>
+            </Modal>
         </div>
     );
 }
