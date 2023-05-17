@@ -1,7 +1,7 @@
 .sections {
     width: 100%;
     background-color: #F5F5F5;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
 
 }
 
