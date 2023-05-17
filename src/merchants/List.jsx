@@ -191,7 +191,7 @@ function List() {
 				</div>
 				<div className={Style.userList}>
  
-					<Box sx={{ maxHeight: "80%", height: "100%", width: '100%', background: "#fff" }}>
+					<Box sx={{height: "100%", width: '100%', background: "#fff" }}>
 						<DataGrid
 							sx={{ height: "100%" }}
 							className={Style.data}
