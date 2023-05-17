@@ -15,6 +15,8 @@ function fakeBackend() {
                 switch (true) {
                     case url.endsWith('/users/authenticate') && opts.method === 'POST':
                         return authenticate();
+                    case url.endsWith('/users/forgot-password') && opts.method === 'POST':
+                        return forgot();
                     case url.endsWith('/users/register') && opts.method === 'POST':
                         return register();
                     case url.endsWith('/users') && opts.method === 'GET':
@@ -40,6 +42,17 @@ function fakeBackend() {
                 const user = users.find(x => x.email === email && x.password === password);
 
                 if (!user) return error('Email or password is incorrect');
+
+                return ok({
+                    ...basicDetails(user),
+                    token: 'fake-jwt-token'
+                });
+            }
+            function forgot() {
+                const { email } = body();
+                const user = users.find(x => x.email === email);
+
+                if (!user) return error('Please enter correct email');
 
                 return ok({
                     ...basicDetails(user),
@@ -118,8 +131,8 @@ function fakeBackend() {
             }
 
             function basicDetails(user) {
-                const { id, email, firstName, lastName } = user;
-                return { id, email, firstName, lastName };
+                const { id, email, firstName, lastName, phone } = user;
+                return { id, email, firstName, lastName, phone };
             }
 
             function isAuthenticated() {

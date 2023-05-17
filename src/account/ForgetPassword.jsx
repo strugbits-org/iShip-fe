@@ -8,15 +8,14 @@ import { useDispatch } from 'react-redux';
 
 import { authActions } from '_store';
 
-export { Login };
+export { Forget };
 
-function Login() {
+function Forget() {
     const dispatch = useDispatch();
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
         email: Yup.string().required('Email is required'),
-        password: Yup.string().required('Password is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -24,8 +23,8 @@ function Login() {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors, isSubmitting } = formState;
 
-    function onSubmit({ email, password }) {
-        return dispatch(authActions.login({ email, password }));
+    function onSubmit({ email }) {
+        return dispatch(authActions.forgot({ email }));
     }
 
     return (
@@ -43,35 +42,24 @@ function Login() {
                             />
                         </Link>
                     </div>
-                    <h1 className={Style.auth_title} style={{ textAlign: "center" }}>
-                        Sign in
+                    <h1 className={Style.auth_title} style={{ textAlign: "center", marginBottom:"50px"}}>
+                        Forgot your password?
                     </h1>
-                    <p className={Style.aut_subtitle} style={{ textAlign: "center" }}>
-                        Sign in to access your dashboard
-                    </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className={Style.input_wrapper}>
                             <input placeholder='Email Address*' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
                             <div className={Style.invalid_feedback}>{errors.email?.message}</div>
                         </div>
-
-                        <div className={Style.input_wrapper}>
-                            <input placeholder='Password' name="password" type="password" {...register('password')} className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
-                            <div className={Style.invalid_feedback}>{errors.password?.message}</div>
-                        </div>
-                        <span className={Style.auth_forget}>
-                            <Link to="../forgot-password">Forgot password?</Link>
-                        </span>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
                             <button disabled={isSubmitting} className={Style.theme_btn}>
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
-                                Login
+                                Reset Password
                             </button>
                         </div>
                         <span className={Style.auth_link} style={{ textAlign: "center" }}>
-                            Don’t have an account? &nbsp;
-                            <Link to="../register">Create an account</Link>
+                            Have an account &nbsp;
+                            <Link to="../login">Sign in</Link>
                         </span>
                     </form>
 

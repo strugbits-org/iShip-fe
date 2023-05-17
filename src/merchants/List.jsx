@@ -93,7 +93,7 @@ function List() {
 		console.log("user inside: ", users);
 		if (users?.value?.length > 0) {
 			const userData = users?.value?.map(data => {
-				return { "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": 35, url: `edit/${data.id}` }
+				return { "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": data.phone, url: `edit/${data.id}` }
 			})
 			setRows(userData)
 		}

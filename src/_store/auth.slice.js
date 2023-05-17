@@ -40,7 +40,8 @@ function createExtraActions() {
 
     return {
         login: login(),
-        logout: logout()
+        logout: logout(),
+        forgot: forgot()
     };
 
     function login() {
@@ -60,6 +61,24 @@ function createExtraActions() {
                     // get return url from location state or default to home page
                     const { from } = history.location.state || { from: { pathname: '/' } };
                     history.navigate(from);
+                    dispatch(alertActions.success({ message: 'Login successful', showAfterRedirect: true }));
+                } catch (error) {
+                    dispatch(alertActions.error(error));
+                }
+            }
+        );
+    }
+    function forgot() {
+        return createAsyncThunk(
+            `${name}/forgot`,
+            async function ({ email }, { dispatch }) {
+                dispatch(alertActions.clear());
+                try {
+                    const user = await fetchWrapper.post(`${baseUrl}/forgot-password`, { email });
+                    console.log(user);
+
+                    dispatch(alertActions.success("Please check your email"));
+
                 } catch (error) {
                     dispatch(alertActions.error(error));
                 }
