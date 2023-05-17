@@ -77,7 +77,7 @@ function createExtraActions() {
                     const user = await fetchWrapper.post(`${baseUrl}/forgot-password`, { email });
                     console.log(user);
 
-                    dispatch(alertActions.success("Please check your email"));
+                    dispatch(alertActions.success(`Reset password link sent to "${user.email}"`));
 
                 } catch (error) {
                     dispatch(alertActions.error(error));
