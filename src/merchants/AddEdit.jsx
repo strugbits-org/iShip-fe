@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -7,17 +7,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import Style from './style.module.css';
 import Styles from "../account/style.module.css";
 
-import { history } from '_helpers';
+// import { history } from '_helpers';
 import { userActions, alertActions } from '_store';
 
 export { AddEdit };
 
-function AddEdit() {
-    const { id } = useParams();
+function AddEdit({ handleClose, id }) {
+    // const { id } = useParams();
     const [title, setTitle] = useState();
+    const [label, setLabel] = useState();
     const dispatch = useDispatch();
     const user = useSelector(x => x.users?.item);
-    // console.log("user",user);
+    // console.log("user-->",user);
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
@@ -30,7 +31,7 @@ function AddEdit() {
         phone: Yup.string().matches(/^\d{11}$/, { message: "Please enter valid number.", excludeEmptyString: false }),
         password: Yup.string()
             .transform(x => x === '' ? undefined : x)
-            // password optional in edit mode
+            // password optional in edit mode 
             .concat(id ? null : Yup.string().required('Password is required'))
             .min(6, 'Password must be at least 6 characters')
     });
@@ -43,13 +44,14 @@ function AddEdit() {
     useEffect(() => {
         if (id) {
             setTitle('Edit Merchant Detail');
+            setLabel('UPDATE');
             // fetch user details into redux state and 
             // populate form fields with reset()
             dispatch(userActions.getById(id)).unwrap()
                 .then(user => reset(user))
-                .then(console.log("user fetch", user))
         } else {
             setTitle('Add New Merchant');
+            setLabel('ADD MERCHANT');
         }
     }, []);
 
@@ -67,7 +69,8 @@ function AddEdit() {
             }
 
             // redirect to user list with success message
-            history.navigate('/users');
+            // history.navigate('/users');
+            handleClose(false)
             dispatch(alertActions.success({ message, showAfterRedirect: true }));
         } catch (error) {
             dispatch(alertActions.error(error));
@@ -110,7 +113,7 @@ function AddEdit() {
                             {/* <Link to="/users" className={Style.theme_btn_secondary}>Cancel</Link> */}
                             <button type="submit" disabled={isSubmitting} className={Styles.theme_btn}>
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
-                                ADD MERCHANT
+                                {label}
                             </button>
                             {/* <button onClick={() => reset()} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button> */}
                         </div>

@@ -12,8 +12,9 @@
 }
 
 .auth_content_wrapper {
-    width: 90%;
+    width: 100%;
     margin: auto;
+    padding: 0 25px;
 }
 
 .auth_image_section {
@@ -115,6 +116,9 @@
 
 /* laptop styling */
 @media (max-width: 991px) {
+    .auth_content_wrapper{
+        width: 90%;
+    }
     .auth_image_section {
         display: none;
     }

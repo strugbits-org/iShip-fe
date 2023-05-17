@@ -33,7 +33,8 @@ function createExtraActions() {
         getAll: getAll(),
         getById: getById(),
         update: update(),
-        delete: _delete()
+        delete: _delete(),
+        // setData: setUsers(),
     };
 
     function register() {
@@ -68,6 +69,7 @@ function createExtraActions() {
                 if (id === auth?.id.toString()) {
                     // update local storage
                     const user = { ...auth, ...data };
+                    console.log("user-0-: ", user);
                     localStorage.setItem('auth', JSON.stringify(user));
 
                     // update auth user in redux state
@@ -91,6 +93,10 @@ function createExtraActions() {
             }
         );
     }
+
+    // function setUsers() {
+
+    // }
 }
 
 function createExtraReducers() {
@@ -98,6 +104,7 @@ function createExtraReducers() {
         getAll();
         getById();
         _delete();
+        // setUsers();
 
         function getAll() {
             var { pending, fulfilled, rejected } = extraActions.getAll;
@@ -142,5 +149,21 @@ function createExtraReducers() {
                     user.isDeleting = false;
                 });
         }
+
+        // function setUsers() {
+        //     var { pending, fulfilled, rejected } = extraActions.delete;
+        //     builder
+        //         .addCase(pending, (state, action) => {
+        //             const user = state.list.value.find(x => x.id === action.meta.arg);
+        //             user.isDeleting = true;
+        //         })
+        //         .addCase(fulfilled, (state, action) => {
+        //             state.list.value = state.list.value.filter(x => x.id !== action.meta.arg);
+        //         })
+        //         .addCase(rejected, (state, action) => {
+        //             const user = state.list.value.find(x => x.id === action.meta.arg);
+        //             user.isDeleting = false;
+        //         });
+        // }
     }
 }

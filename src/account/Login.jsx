@@ -15,7 +15,7 @@ function Login() {
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().required('Username is required'),
+        email: Yup.string().required('Email is required'),
         password: Yup.string().required('Password is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
@@ -24,15 +24,15 @@ function Login() {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors, isSubmitting } = formState;
 
-    function onSubmit({ username, password }) {
-        return dispatch(authActions.login({ username, password }));
+    function onSubmit({ email, password }) {
+        return dispatch(authActions.login({ email, password }));
     }
 
     return (
         <div className={Style.auth_content}>
             <div className={Style.auth_section}>
                 <div className={Style.auth_content_wrapper}>
-                    <div className="flex"
+                    <div className=""
                         style={{ marginBottom: 100, textAlign: "center" }}>
                         <Link to="/">
                             <img
@@ -52,8 +52,8 @@ function Login() {
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className={Style.input_wrapper}>
-                            <input placeholder='Email Address*' name="username" type="text" {...register('username')} className={`${errors.username ? 'is-invalid' : ''} theme_input`} />
-                            <div className={Style.invalid_feedback}>{errors.username?.message}</div>
+                            <input placeholder='Email Address*' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
+                            <div className={Style.invalid_feedback}>{errors.email?.message}</div>
                         </div>
 
                         <div className={Style.input_wrapper}>

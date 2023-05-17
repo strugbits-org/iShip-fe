@@ -36,10 +36,10 @@ function fakeBackend() {
             // route functions
 
             function authenticate() {
-                const { username, password } = body();
-                const user = users.find(x => x.username === username && x.password === password);
+                const { email, password } = body();
+                const user = users.find(x => x.email === email && x.password === password);
 
-                if (!user) return error('Username or password is incorrect');
+                if (!user) return error('Email or password is incorrect');
 
                 return ok({
                     ...basicDetails(user),
@@ -84,8 +84,8 @@ function fakeBackend() {
                 }
 
                 // if username changed check if taken
-                if (params.username !== user.username && users.find(x => x.username === params.username)) {
-                    return error('Username "' + params.username + '" is already taken')
+                if (params.email !== user.email && users.find(x => x.email === params.email)) {
+                    return error('email "' + params.email + '" is already taken')
                 }
 
                 // update and save user
@@ -118,8 +118,8 @@ function fakeBackend() {
             }
 
             function basicDetails(user) {
-                const { id, username, firstName, lastName } = user;
-                return { id, username, firstName, lastName };
+                const { id, email, firstName, lastName } = user;
+                return { id, email, firstName, lastName };
             }
 
             function isAuthenticated() {

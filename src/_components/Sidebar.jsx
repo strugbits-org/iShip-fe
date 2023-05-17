@@ -33,6 +33,7 @@ function Sidebar() {
                 <ul className='menu_items'>
                     <li className='menu_links'>
                         <NavLink to="/" className="menu_item_wrapper">
+                            {/* <Order />  */}
                             <img className='sidebar_icons' src={Order} alt="" />
                             <span className='sidebar_link'> Order</span>
                         </NavLink>
