@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Logout from '../icons/logout.svg';
 import Merchants from '../icons/merchants.svg';
 import Order from '../icons/order.svg';
+// import {useState} from 'react';
 
 import { authActions } from '_store';
 
@@ -13,12 +14,20 @@ function Sidebar() {
     const auth = useSelector(x => x.auth.value);
     const dispatch = useDispatch();
     const logout = () => dispatch(authActions.logout());
-
+    // const [open, setOpen] = useState(false);
+    // const handleOpen = () => {
+    //     setOpen(true)
+    //     console.log("open");
+    // };
+    // const handleClose = () => {
+    //     console.log("close");
+    //     setOpen(false)};
+    
     // only show nav when logged in
     if (!auth) return null;
 
     return (
-        <div className='sidebar'>
+        <div className="sidebar">
             <div className="sidebar_logo" style={{ textAlign: "center" }}>
                 <Link to="/">
                     <img
@@ -49,6 +58,8 @@ function Sidebar() {
                     <img src={Logout} alt="" />
                     <span className='sidebar_link'> Logout</span>
                 </button>
+                {/* <button onClick={handleOpen()}>open</button>
+                <button onClick={handleClose()}>close</button> */}
             </div>
         </div>
     );

@@ -14,16 +14,11 @@ function AccountLayout() {
     }
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-8 offset-sm-2 mt-5">
-                    <Routes>
-                        <Route path="login" element={<Login />} />
-                        <Route path="register" element={<Register />} />
-                        <Route path="forgot-password" element={<Forget />} />
-                    </Routes>
-                </div>
-            </div>
-        </div>
+        <Routes>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="forgot-password" element={<Forget />} />
+        </Routes>
+
     );
 }

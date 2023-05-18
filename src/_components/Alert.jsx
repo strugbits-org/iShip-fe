@@ -12,6 +12,10 @@ function Alert() {
     const location = useLocation();
     const alert = useSelector(x => x.alert.value);
 
+    setTimeout(() => {
+        dispatch(alertActions.clear());
+    }, 7000);
+
     useEffect(() => {
         // clear alert on location change
         dispatch(alertActions.clear());

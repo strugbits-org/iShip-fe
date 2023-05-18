@@ -118,6 +118,7 @@ function List() {
 		{
 			field: 'id', headerName: 'Merchant ID #', flex: 1,
 			minWidth: 50,
+			height: 60
 		},
 		{
 			field: 'fullname',
@@ -137,6 +138,8 @@ function List() {
 			type: 'number',
 			flex: 1,
 			minWidth: 50,
+			align: 'left',
+			headerAlign: 'left'
 		},
 		{
 			field: "Edit Merchant",
@@ -146,6 +149,7 @@ function List() {
 			},
 			flex: 1,
 			minWidth: 50,
+			filterable: false
 		}
 	];
 
@@ -190,10 +194,19 @@ function List() {
 					</div>
 				</div>
 				<div className={Style.userList}>
- 
-					<Box sx={{height: "100%", width: '100%', background: "#fff" }}>
+
+					<Box sx={{ height: "100%", width: '100%', background: "#fff" }}>
 						<DataGrid
-							sx={{ height: "100%" }}
+							headerHeight={80}
+							rowHeight={80}
+							sx={{
+								'.MuiDataGrid-columnSeparator': {
+								  display: 'none',
+								},
+								'&.MuiDataGrid-root': {
+								  border: '	',
+								},
+							  }}
 							className={Style.data}
 							rows={rows}
 							columns={columns}
