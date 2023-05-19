@@ -70,6 +70,7 @@ function AddEdit({ handleClose, id }) {
 
             // redirect to user list with success message
             // history.navigate('/users');
+            dispatch(userActions.getAll()); 
             handleClose(false)
             dispatch(alertActions.success({ message, showAfterRedirect: true }));
         } catch (error) {
