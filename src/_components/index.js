@@ -1,4 +1,4 @@
-export * from './Alert';
-export * from './Nav';
+export * from './Alert/Alert';
+export * from './Navbar/Nav';
 export * from './PrivateRoute';
-export * from './Sidebar';
+export * from './SideBar/Sidebar';

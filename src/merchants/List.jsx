@@ -19,6 +19,7 @@ import { AddEdit } from './AddEdit';
 import { userActions } from '_store';
 
 export { List };
+//<Model Styling>
 const Fade = React.forwardRef(function Fade(props, ref) {
 	const {
 		children,
@@ -50,6 +51,7 @@ const Fade = React.forwardRef(function Fade(props, ref) {
 		</animated.div>
 	);
 });
+
 Fade.propTypes = {
 	children: PropTypes.element.isRequired,
 	in: PropTypes.bool,
@@ -58,17 +60,7 @@ Fade.propTypes = {
 	onExited: PropTypes.func,
 	ownerState: PropTypes.any,
 };
-const style = {
-	position: 'absolute',
-	top: '50%',
-	left: '50%',
-	transform: 'translate(-50%, -50%)',
-	width: 750,
-	borderRadius: "15px",
-	bgcolor: 'background.paper',
-	boxShadow: 24,
-	p: 4,
-};
+//<Model Styling/>
 
 function List() {
 
@@ -84,11 +76,11 @@ function List() {
 	const dispatch = useDispatch();
 	// console.log("asd", useSelector(x => x.users.list));
 
-
 	useEffect(() => {
 		dispatch(userActions.getAll());
 	}, []);
 
+	//SET GRID ROW
 	useEffect(() => {
 		console.log("user inside: ", users);
 		if (users?.value?.length > 0) {
@@ -99,7 +91,8 @@ function List() {
 		}
 	}, [users]);
 
-	const top100Films = [
+	//DUMMY DATA SEARCH FIELD
+	const dummyDAta = [
 		{ title: 'The Shawshank Redemption', year: 1994 },
 		{ title: 'The Godfather', year: 1972 },
 		{ title: 'The Godfather: Part II', year: 1974 },
@@ -109,11 +102,7 @@ function List() {
 		{ title: 'Pulp Fiction', year: 1994 },
 	]
 
-	// const userData = users?.value?.map(data => {
-
-	// return rows.push({ "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": 35, url: `edit/${data.id}` })
-	// })
-	// console.log("userData", userData);
+	//GRID COLUMN
 	const columns = [
 		{
 			field: 'id', headerName: 'Merchant ID #', flex: 1,
@@ -153,7 +142,7 @@ function List() {
 		}
 	];
 
-	console.log("editUser: ", editUser);
+	// console.log("editUser: ", editUser);
 	return (
 		<div className={Style.sections}>
 			<div className={Style.main_container}>
@@ -167,7 +156,7 @@ function List() {
 								sx={{ width: "100%", border: "none" }}
 								id="free-solo-2-demo"
 								disableClearable
-								options={top100Films.map((option) => option.title)}
+								options={dummyDAta.map((option) => option.title)}
 								renderInput={(params) => (
 									<TextField
 										className={Style.search_field}
@@ -201,12 +190,12 @@ function List() {
 							rowHeight={80}
 							sx={{
 								'.MuiDataGrid-columnSeparator': {
-								  display: 'none',
+									display: 'none',
 								},
 								'&.MuiDataGrid-root': {
-								  border: '	',
+									border: '	',
 								},
-							  }}
+							}}
 							className={Style.data}
 							rows={rows}
 							columns={columns}
@@ -238,7 +227,7 @@ function List() {
 				}}
 			>
 				<Fade in={open}>
-					<Box sx={style}>
+					<Box className={Style.modelBox}>
 						<CloseIcon className={Style.closeBtn} onClick={handleClose} />
 						<AddEdit handleClose={handleClose} id={editUser ? editUser.id : ""} />
 					</Box>

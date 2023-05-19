@@ -5,6 +5,7 @@ import { Nav, Alert, PrivateRoute, Sidebar } from '_components';
 import { Orders } from 'orders';
 import { AccountLayout } from 'account';
 import { UsersLayout } from 'merchants';
+import { useState } from 'react';
 
 export { App };
 
@@ -13,13 +14,18 @@ function App() {
     // anywhere in the react app (inside or outside components)
     history.navigate = useNavigate();
     history.location = useLocation();
+    const [sidebar, setSidebar] = useState(false);
+
+    const showMobile = () => setSidebar(!sidebar);
+
+
 
     return (
         <div className='main_container flex'>
             <Alert />
-            <Sidebar />
+            <Sidebar action={showMobile} />
             <div className='main_content' >
-                <Nav />
+                <Nav action={showMobile} />
                 <Routes>
                     {/* private */}
                     <Route element={<PrivateRoute />}>

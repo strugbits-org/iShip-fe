@@ -113,6 +113,10 @@
     font-size:14px;
     font-family: AxiformaRegular;
 }
+.logo_auth{
+    margin-bottom: 100px;
+    text-align: center;
+}
 
 /* laptop styling */
 @media (max-width: 991px) {
@@ -122,16 +126,33 @@
     .auth_image_section {
         display: none;
     }
-
+    .input_row{
+        flex-direction: column;
+    }
+    .input_row .input_wrapper{
+        width: 100%;
+    }
+    .theme_input, .theme_btn {
+        height: 50px;
+    }
+    .auth_link, .auth_link a{
+        font-size: 14px;
+    }
+    .title{
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
     .auth_content {
         height: 100vh;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./signinBg.png');
     }
-
+    .logo_auth{
+        margin-bottom: 50px;
+    }
     .auth_section {
         width: 90%;
         background-color: var(--textHeadingWhite);
         border-radius: 10px;
-        padding: 20px;
+        padding: 50px 0;
     }
 }

@@ -32,8 +32,7 @@ function Login() {
         <div className={Style.auth_content}>
             <div className={Style.auth_section}>
                 <div className={Style.auth_content_wrapper}>
-                    <div className=""
-                        style={{ marginBottom: 100, textAlign: "center" }}>
+                    <div className={Style.logo_auth}>
                         <Link to="/">
                             <img
                                 src="/logo_light.png"

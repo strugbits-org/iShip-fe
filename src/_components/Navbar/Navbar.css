@@ -1,0 +1,47 @@
+
+/* //navbar */
+.navBar {
+    height: 100px;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 35px;
+}
+
+.display_name {
+    font-size: 18px;
+    font-family: AxiformaMedium;
+    color: var(--textHeadingBlack);
+}
+
+.navBar_content {
+    gap: 20px;
+}
+.nav_logo{
+    display: none;
+}
+.avatar {
+    width: 55px;
+    height: 55px;
+    background-color: var(--primaryColor);
+    color: var(--textDard);
+    font-size: 26px;
+    font-family: AxiformaMedium;
+    border-radius: 50%;
+}
+
+@media (max-width:1024px) {
+    .nav_logo{
+        display: flex;
+        gap: 20px;
+    }
+    .navBar{
+        justify-content: space-between;
+    }
+}
+
+@media (max-width:768px) {
+    .logo{
+        display: none;
+    }
+}
+
