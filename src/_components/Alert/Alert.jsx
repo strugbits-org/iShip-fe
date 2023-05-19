@@ -14,7 +14,7 @@ function Alert() {
 
     setTimeout(() => {
         dispatch(alertActions.clear());
-    }, 7000);
+    }, 5000);
 
     useEffect(() => {
         // clear alert on location change
@@ -24,13 +24,10 @@ function Alert() {
     if (!alert) return null;
 
     return (
-        <div className="container">
-            <div className="m-3">
-                <div className={`alert alert-dismissible ${alert.type}`}>
-                    {alert.message}
-                    <button type="button" className="btn-close" onClick={() => dispatch(alertActions.clear())}>X</button>
-                </div>
-            </div>
+        <div className={`alert alert-dismissible ${alert.type}`}>
+            {alert.message}
+            <button type="button" className="btn-close" onClick={() => dispatch(alertActions.clear())}>X</button>
+
         </div>
     );
 }

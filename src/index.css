@@ -40,7 +40,8 @@ ul li {
 .theme_input {
     border: 1px solid rgb(157 157 157 / 50%);
     border-radius: 5px;
-    padding: 16px 20px;
+    height: 60px;
+    padding: 0 20px;
     background-color: var(--textLight);
     color: var(--textHeadingBlack);
     font-family: AxiformaMedium;
@@ -137,6 +138,7 @@ ul li {
     border-radius: 5px;
     font-size: 15px;
     font-family: AxiformaRegular;
+    z-index: 9999;
 }
 .alert-success{
     color: var(--textDard);
@@ -151,4 +153,11 @@ button.btn-close {
     width: 20px;
     height: 20px;
     border: navajowhite;
+}
+
+/* laptop */
+@media (max-width: 991px) {
+    .theme_input{
+        height: 50px;
+    }
 }
