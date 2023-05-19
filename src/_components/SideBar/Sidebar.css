@@ -77,15 +77,30 @@ a.menu_item_wrapper.active {
     background-color: var(--primaryColor);
 
 }
-
+.close_icon{
+    display: none ;
+}
 
 @media (max-width: 1024px){
     .sidebar {
-        display: none;
         position: fixed;
-        background-color: aliceblue;
+        background-color: #fff;
+        box-shadow: -5px 11px 12px 6px #13111143;
         z-index: 111;
     }
-
+    .menu_bars{
+        display: none;
+    }
+    .close_icon{
+        display: block;
+    }
+    .hideOnMobile{
+        display: none;
+        transition: all .5s;
+    }
+    .showOnMobile{
+        display: block;
+        transition: all .5s;
+    }
 }
 
