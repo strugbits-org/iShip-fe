@@ -2,9 +2,9 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 
 import { history } from '_helpers';
 import { Nav, Alert, PrivateRoute, Sidebar } from '_components';
-import { Orders } from 'orders';
-import { AccountLayout } from 'account';
-import { UsersLayout } from 'merchants';
+import { Orders } from '_screen/orders';
+import { AccountLayout } from '_screen/account';
+import { UsersLayout } from '_screen/merchants';
 
 export { App };
 

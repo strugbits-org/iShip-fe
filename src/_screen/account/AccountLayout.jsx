@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { Login, Register, Forget } from './';
+import { Login, Register, Forget } from '.';
 
 export { AccountLayout };
 

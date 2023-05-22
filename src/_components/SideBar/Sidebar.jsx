@@ -28,28 +28,28 @@ function Sidebar() {
 
     return (
         <div className={mobile ? mobile.class : "hideOnMobile"}>
-            <div className={sidebar ? 'sidebar active' : 'sidebar close'}>
+            <div className={sidebar ? 'sidebar close' : 'sidebar active'}>
 
                 <div className="sidebar_logo" style={{ textAlign: "center" }}>
                     <Link to="/">
                         {sidebar ?
                             <img
-                                src="/logo_light.png"
-                                alt="Logo"
-                                width="160px"
-                                height="50px"
-                            />
-                            :
-                            <img
                                 src="/iships-icon.svg"
                                 alt="Logo"
                                 width="50px"
                                 height="40px"
+                            />
+                            :
+                            <img
+                                src="/logo_light.png"
+                                alt="Logo"
+                                width="160px"
+                                height="50px"
                             />}
                     </Link>
                     <Link to='#'>
                         <div className='menu_bars'><MenuIcon className='menu_bars' onClick={showSidebar} /></div>
-                       <div  className='close_icon'> <CloseIcon onClick={() => dispatch(mobileActions.hideMobile("hideOnMobile"))} /></div>
+                        <div className='close_icon'> <CloseIcon onClick={() => dispatch(mobileActions.hideMobile("hideOnMobile"))} /></div>
                     </Link>
 
                 </div>
@@ -57,7 +57,7 @@ function Sidebar() {
                     <ul className='menu_items'>
                         <li className='menu_links'>
                             <NavLink to="/" className="menu_item_wrapper">
-                                {/* <Order />  */}
+                                {/* <Svg />  */}
                                 <img className='sidebar_icons' src={Order} alt="" />
                                 <span className='sidebar_link'> Order</span>
                             </NavLink>
