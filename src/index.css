@@ -70,42 +70,42 @@ ul li {
 
 @font-face {
     font-family: AxiformaBlack;
-    src: url(./assets/fonts/Axiforma-Black.ttf);
+    src: url(./_assets/fonts/Axiforma-Black.ttf);
 }
 
 @font-face {
     font-family: AxiformaBold;
-    src: url(./assets/fonts/Axiforma-Bold.ttf);
+    src: url(./_assets/fonts/Axiforma-Bold.ttf);
 }
 
 @font-face {
     font-family: AxiformaExtraBold;
-    src: url(./assets/fonts/Axiforma-ExtraBold.ttf);
+    src: url(./_assets/fonts/Axiforma-ExtraBold.ttf);
 }
 
 @font-face {
     font-family: AxiformaLight;
-    src: url(./assets/fonts/Axiforma-Light.ttf);
+    src: url(./_assets/fonts/Axiforma-Light.ttf);
 }
 
 @font-face {
     font-family: AxiformaMedium;
-    src: url(./assets/fonts/Axiforma-Medium.ttf);
+    src: url(./_assets/fonts/Axiforma-Medium.ttf);
 }
 
 @font-face {
     font-family: AxiformaRegular;
-    src: url(./assets/fonts/Axiforma-Regular.ttf);
+    src: url(./_assets/fonts/Axiforma-Regular.ttf);
 }
 
 @font-face {
     font-family: AxiformaSemiBold;
-    src: url(./assets/fonts/Axiforma-SemiBold.ttf);
+    src: url(./_assets/fonts/Axiforma-SemiBold.ttf);
 }
 
 @font-face {
     font-family: AxiformaThin;
-    src: url(./assets/fonts/Axiforma-Thin.ttf);
+    src: url(./_assets/fonts/Axiforma-Thin.ttf);
 }
 
 /* //main container */
