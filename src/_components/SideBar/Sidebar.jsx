@@ -1,8 +1,8 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Logout from '../../icons/logout.svg';
-import Merchants from '../../icons/merchants.svg';
-import Order from '../../icons/order.svg';
+import Logout from '../../_assets/icons/logout.svg';
+import Merchants from '../../_assets/icons/merchants.svg';
+import Order from '../../_assets/icons/order.svg';
 import { useState } from 'react';
 import './Sidebar.css';
 import MenuIcon from '@mui/icons-material/Menu';

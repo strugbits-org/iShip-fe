@@ -14,13 +14,11 @@ function App() {
     history.navigate = useNavigate();
     history.location = useLocation();
 
-
-
     return (
         <div className='main_container flex'>
             <Alert />
             <Sidebar />
-            <div className='main_content' >
+            <div className='main_content'>
                 <Nav />
                 <Routes>
                     {/* private */}
