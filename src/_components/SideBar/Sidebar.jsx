@@ -34,14 +34,14 @@ function Sidebar() {
                     <Link to="/">
                         {sidebar ?
                             <img
-                                src="/iships-icon.svg"
+                                src="/images/iships_icon.svg"
                                 alt="Logo"
                                 width="50px"
                                 height="40px"
                             />
                             :
                             <img
-                                src="/logo_light.png"
+                                src="/images/logo_light.png"
                                 alt="Logo"
                                 width="160px"
                                 height="50px"
