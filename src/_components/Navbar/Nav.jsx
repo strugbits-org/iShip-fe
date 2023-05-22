@@ -19,7 +19,7 @@ function Nav() {
             <div className="nav_logo align_c" style={{ textAlign: "center" }}>
                 <Link className='logo' to="/">
                     <img
-                        src="/logo_light.png"
+                        src="/images/logo_light.png"
                         alt="Logo"
                         width="150px"
                         height="50px"
