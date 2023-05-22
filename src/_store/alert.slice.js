@@ -33,7 +33,6 @@ function createReducers() {
         state.value = {
             type: 'success',
             message: action.payload?.message || action.payload,
-            showAfterRedirect: action.payload?.showAfterRedirect
         };
     }
 

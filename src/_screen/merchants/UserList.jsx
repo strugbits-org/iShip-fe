@@ -106,7 +106,7 @@ function List() {
 	const columns = [
 		{
 			field: 'id', headerName: 'Merchant ID #', flex: 1,
-			minWidth: 50,
+			maxWidth: 150,
 			height: 60
 		},
 		{
@@ -193,7 +193,7 @@ function List() {
 									display: 'none',
 								},
 								'&.MuiDataGrid-root': {
-									border: '	',
+									border: '',
 								},
 							}}
 							className={Style.data}
@@ -202,7 +202,7 @@ function List() {
 							initialState={{
 								pagination: {
 									paginationModel: {
-										pageSize: 15,
+										pageSize: 8,
 									},
 								},
 							}}
