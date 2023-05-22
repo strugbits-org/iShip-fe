@@ -17,7 +17,7 @@ function Sidebar() {
     const logout = () => dispatch(authActions.logout());
 
     const mobile = useSelector(x => x.mobile.value)
-    console.log("mobile  ---", mobile);
+    // console.log("mobile  ---", mobile);
     //TOGGLE sidebar component
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);

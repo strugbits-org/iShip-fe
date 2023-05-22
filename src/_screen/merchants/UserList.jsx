@@ -71,7 +71,7 @@ function List() {
 	const handleClose = () => setOpen(false);
 
 	const users = useSelector(x => x.users.list);
-	console.log("users====> ", users);
+	// console.log("users====> ", users);
 
 	const dispatch = useDispatch();
 	// console.log("asd", useSelector(x => x.users.list));
@@ -82,7 +82,7 @@ function List() {
 
 	//SET GRID ROW
 	useEffect(() => {
-		console.log("user inside: ", users);
+		// console.log("user inside: ", users);
 		if (users?.value?.length > 0) {
 			const userData = users?.value?.map(data => {
 				return { "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": data.phone, url: `edit/${data.id}` }

@@ -31,7 +31,7 @@ function createReducers() {
     // an object ({ message: 'alert message', showAfterRedirect: true })
     function success(state, action) {
         state.value = {
-            type: 'alert-success',
+            type: 'success',
             message: action.payload?.message || action.payload,
             showAfterRedirect: action.payload?.showAfterRedirect
         };
@@ -39,7 +39,7 @@ function createReducers() {
 
     function error(state, action) {
         state.value = {
-            type: 'alert-danger',
+            type: 'error',
             message: action.payload?.message || action.payload,
             showAfterRedirect: action.payload?.showAfterRedirect
         };

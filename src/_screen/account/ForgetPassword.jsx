@@ -34,7 +34,7 @@ function Forget() {
                     <div className={Style.logo_auth}>
                         <Link to="/">
                             <img
-                                src="/logo_light.png"
+                                src="/images/logo_light.png"
                                 alt="Logo"
                                 width="235px"
                                 height="80px"
