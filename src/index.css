@@ -46,6 +46,7 @@ ul li {
     color: var(--textHeadingBlack);
     font-family: AxiformaMedium;
     font-size: 16px;
+    width: 100%;
 }
 
 .theme_input::placeholder {
@@ -107,57 +108,20 @@ ul li {
     src: url(./assets/fonts/Axiforma-Thin.ttf);
 }
 
-
-
 /* //main container */
 .main_content {
     width: 100%;
     height: auto;
 }
 
-
 /* override */
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border: none!important;
-}
-
-/* //ALERT  */
-.alert.alert-dismissible {
-    position: fixed;
-    background: var(--textHeadingWhite);
-    height: 60px;
-    box-shadow: -5px 3px 9px 9px #00000012;
-    top: 10px;
-    right: 50%;
-    padding: 30px;
-    transform: translateX(50%);
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    font-size: 15px;
-    font-family: AxiformaRegular;
-    z-index: 9999;
-}
-.alert-success{
-    color: var(--textDard);
-}   
-.alert-danger{
-    color: var(--error);
-}
-button.btn-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    border: navajowhite;
+    border: none !important;
 }
 
 /* laptop */
 @media (max-width: 991px) {
-    .theme_input{
+    .theme_input {
         height: 50px;
     }
 }

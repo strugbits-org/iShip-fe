@@ -1,4 +1,4 @@
-import Bg from './signinBg.png';
+import Bg from '../../_assets/images/signinBg.png';
 import Style from "./style.module.css";
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";

@@ -1,13 +1,12 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Logout from '../../_assets/icons/logout.svg';
-import Merchants from '../../_assets/icons/merchants.svg';
-import Order from '../../_assets/icons/order.svg';
+import { Logout, Merchants, Orders } from '../../_assets/icons/icon';
 import { useState } from 'react';
 import './Sidebar.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { authActions, mobileActions } from '_store';
+
 
 export { Sidebar };
 
@@ -17,7 +16,7 @@ function Sidebar() {
     const logout = () => dispatch(authActions.logout());
 
     const mobile = useSelector(x => x.mobile.value)
-    // console.log("mobile  ---", mobile);
+
     //TOGGLE sidebar component
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
@@ -57,24 +56,28 @@ function Sidebar() {
                     <ul className='menu_items'>
                         <li className='menu_links'>
                             <NavLink to="/" className="menu_item_wrapper">
-                                {/* <Svg />  */}
-                                <img className='sidebar_icons' src={Order} alt="" />
+                                <span className='_iconHover'>
+                                    <Orders />
+                                </span>
                                 <span className='sidebar_link'> Order</span>
                             </NavLink>
                         </li>
                         <li className='menu_links'>
                             <NavLink to="/users" className="menu_item_wrapper">
-                                <img className='sidebar_icons' src={Merchants} alt="" />
+                                <span className='_iconHover'>
+                                    <Merchants />
+                                </span>
                                 <span className='sidebar_link'> Merchants</span>
                             </NavLink>
                         </li>
                     </ul>
                     <button onClick={logout} className="menu_item_wrapper">
-                        <img src={Logout} alt="" />
+                        <span className='_iconHover'>
+                            <Logout />
+                        </span>
                         <span className='sidebar_link'> Logout</span>
                     </button>
-                    {/* <button onClick={handleOpen()}>open</button>
-                <button onClick={handleClose()}>close</button> */}
+
                 </div>
             </div>
         </div>

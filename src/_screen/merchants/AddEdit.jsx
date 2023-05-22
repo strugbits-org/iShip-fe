@@ -6,6 +6,8 @@ import * as Yup from 'yup';
 import { useSelector, useDispatch } from 'react-redux';
 import Style from './style.module.css';
 import Styles from "../account/style.module.css";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 // import { history } from '_helpers';
 import { userActions, alertActions } from '_store';
@@ -13,6 +15,12 @@ import { userActions, alertActions } from '_store';
 export { AddEdit };
 
 function AddEdit({ handleClose, id }) {
+
+     // Add these variables to your component to track the state
+     const [showPassword, setShowPassword] = useState(false);
+     const handleClickShowPassword = () => setShowPassword(!showPassword);
+     const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
     // const { id } = useParams();
     const [title, setTitle] = useState();
     const [label, setLabel] = useState();
@@ -62,10 +70,10 @@ function AddEdit({ handleClose, id }) {
             let message;
             if (id) {
                 await dispatch(userActions.update({ id, data })).unwrap();
-                message = 'User updated';
+                message = 'User has been updated';
             } else {
                 await dispatch(userActions.register(data)).unwrap();
-                message = 'User added';
+                message = 'User added successfully';
             }
 
             // redirect to user list with success message
@@ -106,7 +114,14 @@ function AddEdit({ handleClose, id }) {
                             <label className="form-label">
                                 {id && <span className={Style.notification}>(Leave blank to keep the same password)</span>}
                             </label>
-                            <input placeholder='Password' name="password" type="password" {...register('password')} className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
+                            <div className={Styles.password_field}>
+                                <input placeholder='Password' name="password"
+                                    type={showPassword ? 'text' : 'password'} {...register('password')}
+                                    className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
+                                <span className={Styles.pass_icon} aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword} > {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />} </span>
+                            </div>
                             <div className={Styles.invalid_feedback}>{errors.password?.message}</div>
 
                         </div>

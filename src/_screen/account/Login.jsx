@@ -1,17 +1,25 @@
-import Bg from './signinBg.png';
+import Bg from '../../_assets/images/signinBg.png';
 import Style from "./style.module.css";
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-
 import { authActions } from '_store';
+import { useState } from 'react';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 
 export { Login };
 
 function Login() {
     const dispatch = useDispatch();
+
+    // Add these variables to your component to track the state
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
@@ -54,9 +62,15 @@ function Login() {
                             <input placeholder='Email Address*' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
                             <div className={Style.invalid_feedback}>{errors.email?.message}</div>
                         </div>
-
                         <div className={Style.input_wrapper}>
-                            <input placeholder='Password' name="password" type="password" {...register('password')} className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
+                            <div className={Style.password_field}>
+                                <input placeholder='Password' name="password"
+                                    type={showPassword ? 'text' : 'password'} {...register('password')}
+                                    className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
+                                <span className={Style.pass_icon} aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword} > {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />} </span>
+                            </div>
                             <div className={Style.invalid_feedback}>{errors.password?.message}</div>
                         </div>
                         <span className={Style.auth_forget}>
@@ -73,7 +87,6 @@ function Login() {
                             <Link to="../register">Create an account</Link>
                         </span>
                     </form>
-
                 </div>
             </div>
             <div className={Style.auth_image_section}>

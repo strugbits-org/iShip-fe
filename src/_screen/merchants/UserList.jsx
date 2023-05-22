@@ -105,28 +105,29 @@ function List() {
 	//GRID COLUMN
 	const columns = [
 		{
-			field: 'id', headerName: 'Merchant ID #', flex: 1,
-			maxWidth: 150,
-			height: 60
+			field: 'id', headerName: 'Merchant ID #', 
+			minWidth:150,
+			maxWidth:200,
+			flex:1,	
 		},
 		{
 			field: 'fullname',
 			headerName: 'Merchant Name',
-			flex: 1,
-			minWidth: 50,
+			minWidth:150,
+			flex: 1
 		},
 		{
 			field: 'email',
 			headerName: 'Merchant Email',
-			flex: 1,
-			minWidth: 50,
+			minWidth:150,
+			flex:1,
 		},
 		{
 			field: 'phone',
 			headerName: 'Merchant Phone #',
 			type: 'number',
-			flex: 1,
-			minWidth: 50,
+			minWidth:150,
+			flex:1,
 			align: 'left',
 			headerAlign: 'left'
 		},
@@ -136,11 +137,31 @@ function List() {
 
 				return <Link onClick={() => { setEditUser(cellValues.row); handleOpen() }} className={Style.col_btn}>Edit details</Link>;
 			},
-			flex: 1,
-			minWidth: 50,
+			minWidth:150,
 			filterable: false
 		}
 	];
+
+	// Grid Style
+	const grigStyle =
+	{
+		'.MuiDataGrid-columnSeparator': {
+			display: 'none',
+		},
+		'&.MuiDataGrid-root': {
+			border: '',
+		},
+		'.MuiDataGrid-cellContent': {
+			fontFamily: "AxiformaRegular",
+			fontSize : "14px",
+			color: '#303030'
+		},
+		'.MuiDataGrid-columnHeaderTitleContainerContent':{
+			fontFamily: 'AxiformaSemiBold',
+			color: '#000',
+			fontSize : "14px",
+		}
+	}
 
 	// console.log("editUser: ", editUser);
 	return (
@@ -188,14 +209,7 @@ function List() {
 						<DataGrid
 							headerHeight={80}
 							rowHeight={80}
-							sx={{
-								'.MuiDataGrid-columnSeparator': {
-									display: 'none',
-								},
-								'&.MuiDataGrid-root': {
-									border: '',
-								},
-							}}
+							sx={grigStyle}
 							className={Style.data}
 							rows={rows}
 							columns={columns}

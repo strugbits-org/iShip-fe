@@ -46,8 +46,13 @@ span.sidebar_link {
 }
 
 .menu_item_wrapper:hover span.sidebar_link,
-.menu_item_wrapper.active span.sidebar_link {
+a.menu_item_wrapper.active span.sidebar_link {
     color: var(--textLight);
+}
+
+.menu_item_wrapper:hover ._iconHover svg,
+a.menu_item_wrapper.active ._iconHover svg{
+    fill: var(--textLight);
 }
 
 .menu_links:not(:last-child) {

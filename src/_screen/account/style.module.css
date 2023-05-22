@@ -118,6 +118,17 @@
     margin-bottom: 100px;
     text-align: center;
 }
+.password_field{
+    width: 100%;
+    position: relative;
+}
+.pass_icon{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    color: var(--inputColor);
+}
 
 /* laptop styling */
 @media (max-width: 991px) {
@@ -148,7 +159,7 @@
     }
     .auth_content {
         height: 100vh;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('./signinBg.png');
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../_assets/images/signinBg.png');
     }
     .logo_auth{
         margin-bottom: 50px;

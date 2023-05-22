@@ -18,6 +18,7 @@ function AccountLayout() {
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="forgot-password" element={<Forget />} />
+            <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 
     );
