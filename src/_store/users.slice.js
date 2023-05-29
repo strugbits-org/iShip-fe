@@ -26,31 +26,47 @@ function createInitialState() {
 }
 
 function createExtraActions() {
-    const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
+    // const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
+    const baseUrl = `${process.env.BACKEND_URL}`;
 
+    console.log("baseUrl", baseUrl);
     return {
         register: register(),
+        addUser: addUser(),
         getAll: getAll(),
         getById: getById(),
         update: update(),
         delete: _delete(),
-        // setData: setUsers(),
     };
+
+    // function register() {
+    //     return createAsyncThunk(
+    //         `${name}/register`,
+    //         async (user) => await fetchWrapper.post(`${baseUrl}/register`, user)    
+    //     );
+    // }
 
     function register() {
         return createAsyncThunk(
             `${name}/register`,
-            async (user) => await fetchWrapper.post(`${baseUrl}/register`, user)
+            async (user) => await fetchWrapper.post(`http://localhost:4567/register`, user)
+        );
+    }
+
+    function addUser() {
+        return createAsyncThunk(
+            `${name}/addUser`,
+            async (user) => await fetchWrapper.post(`http://localhost:4567/user/user-profile`, user)
         );
     }
 
     function getAll() {
+        // console.log("token", token);
         return createAsyncThunk(
             `${name}/getAll`,
-            async () => await fetchWrapper.get(baseUrl)
+            async () => await fetchWrapper.get(`http://localhost:4567/user/get-users`)
         );
     }
-
     function getById() {
         return createAsyncThunk(
             `${name}/getById`,
@@ -61,23 +77,40 @@ function createExtraActions() {
     function update() {
         return createAsyncThunk(
             `${name}/update`,
-            async function ({ id, data }, { getState, dispatch }) {
-                await fetchWrapper.put(`${baseUrl}/${id}`, data);
-
-                // update stored user if the logged in user updated their own record
-                const auth = getState().auth.value;
-                if (id === auth?.id.toString()) {
-                    // update local storage
-                    const user = { ...auth, ...data };
-                    console.log("user-0-: ", user);
-                    localStorage.setItem('auth', JSON.stringify(user));
-
-                    // update auth user in redux state
-                    dispatch(authActions.setAuth(user));
-                }
+            async function ({ id, data }) {
+                await fetchWrapper.patch(`http://localhost:4567/user/update-profile?id=${id}`, data);
             }
         );
     }
+    // function getAll() {
+    //     return createAsyncThunk(
+    //         `${name}/getAll`,
+    //         async () => await fetchWrapper.get(baseUrl)
+    //     );
+    // }
+
+
+    // function update() {
+    //     return createAsyncThunk(
+    //         `${name}/update`,
+    //         async function ({ id, data }, { getState, dispatch }) {
+    //             await fetchWrapper.put(`${baseUrl}/${id}`, data);
+
+    //             // update stored user if the logged in user updated their own record
+    //             const auth = getState().auth.value;
+    //             if (id === auth?.id.toString()) {
+    //                 // update local storage
+    //                 const user = { ...auth, ...data };
+    //                 console.log("user-0-: ", user);
+    //                 localStorage.setItem('auth', JSON.stringify(user));
+
+    //                 // update auth user in redux state
+    //                 dispatch(authActions.setAuth(user));
+    //             }
+    //         }
+    //     );
+    // }
+
 
     // prefixed with underscore because delete is a reserved word in javascript
     function _delete() {
@@ -93,10 +126,6 @@ function createExtraActions() {
             }
         );
     }
-
-    // function setUsers() {
-
-    // }
 }
 
 function createExtraReducers() {
@@ -104,7 +133,6 @@ function createExtraReducers() {
         getAll();
         getById();
         _delete();
-        // setUsers();
 
         function getAll() {
             var { pending, fulfilled, rejected } = extraActions.getAll;
@@ -149,21 +177,5 @@ function createExtraReducers() {
                     user.isDeleting = false;
                 });
         }
-
-        // function setUsers() {
-        //     var { pending, fulfilled, rejected } = extraActions.delete;
-        //     builder
-        //         .addCase(pending, (state, action) => {
-        //             const user = state.list.value.find(x => x.id === action.meta.arg);
-        //             user.isDeleting = true;
-        //         })
-        //         .addCase(fulfilled, (state, action) => {
-        //             state.list.value = state.list.value.filter(x => x.id !== action.meta.arg);
-        //         })
-        //         .addCase(rejected, (state, action) => {
-        //             const user = state.list.value.find(x => x.id === action.meta.arg);
-        //             user.isDeleting = false;
-        //         });
-        // }
     }
 }

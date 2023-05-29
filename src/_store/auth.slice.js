@@ -36,7 +36,7 @@ function createReducers() {
 }
 
 function createExtraActions() {
-    const baseUrl = `${process.env.REACT_APP_API_URL}/users`;
+    const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
 
     return {
         login: login(),
@@ -50,7 +50,7 @@ function createExtraActions() {
             async function ({ email, password }, { dispatch }) {
                 dispatch(alertActions.clear());
                 try {
-                    const user = await fetchWrapper.post(`${baseUrl}/authenticate`, { email, password });
+                    const user = await fetchWrapper.post(`http://localhost:4567/login`, { email, password });
 
                     // set auth user in redux state
                     dispatch(authActions.setAuth(user));
@@ -59,8 +59,8 @@ function createExtraActions() {
                     localStorage.setItem('auth', JSON.stringify(user));
 
                     // get return url from location state or default to home page
-                    const { from } = history.location.state || { from: { pathname: '/' } };
-                    history.navigate(from);
+                    // const { from } = history.location.state || { from: { pathname: '/' } };
+                    // history.navigate(from);
                     dispatch(alertActions.success({ message: 'Login successful', showAfterRedirect: true }));
                 } catch (error) {
                     dispatch(alertActions.error(error));

@@ -23,10 +23,9 @@ function Register() {
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        firstName: Yup.string()
+        name: Yup.string()
             .required('First Name is required'),
-        lastName: Yup.string()
-            .required('Last Name is required'),
+        phoneno: Yup.string().matches(/^\d{11}$/, { message: "Please enter valid number.", excludeEmptyString: false }),
         email: Yup.string().email()
             .required('email is required'),
         password: Yup.string()
@@ -73,12 +72,12 @@ function Register() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={Style.input_row}>
                             <div className={Style.input_wrapper}>
-                                <input placeholder='Full Name*' name="firstName" type="text" {...register('firstName')} className={`${errors.firstName ? 'is-invalid' : ''} theme_input`} />
-                                <div className={Style.invalid_feedback} >{errors.firstName?.message}</div>
+                                <input placeholder='Full Name*' name="name" type="text" {...register('name')} className={`${errors.name ? 'is-invalid' : ''} theme_input`} />
+                                <div className={Style.invalid_feedback} >{errors.name?.message}</div>
                             </div>
                             <div className={Style.input_wrapper}>
-                                <input placeholder='Last Name*' name="lastName" type="text" {...register('lastName')} className={`${errors.lastName ? 'is-invalid' : ''} theme_input`} />
-                                <div className={Style.invalid_feedback} >{errors.lastName?.message}</div>
+                                <input placeholder='Phone Number*' name="phoneno" type="text" {...register('phoneno')} className={`${errors.phone ? 'is-invalid' : ''} theme_input`} />
+                                <div className={Style.invalid_feedback} >{errors.phoneno?.message}</div>
                             </div>
                         </div>
                         <div className={Style.input_wrapper}>

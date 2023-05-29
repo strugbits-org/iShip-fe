@@ -64,6 +64,7 @@ Fade.propTypes = {
 
 function List() {
 
+	// console.log("auth", token);
 	const [open, setOpen] = React.useState(false);
 	const [rows, setRows] = React.useState([]);
 	const [editUser, setEditUser] = React.useState('');
@@ -82,10 +83,10 @@ function List() {
 
 	//SET GRID ROW
 	useEffect(() => {
-		// console.log("user inside: ", users);
-		if (users?.value?.length > 0) {
-			const userData = users?.value?.map(data => {
-				return { "id": data.id, "fullname": data.firstName + " " + data.lastName, "email": data.email, "phone": data.phone, url: `edit/${data.id}` }
+		// console.log("user inside: ", users?.value?.user);
+		if (users?.value?.user?.length > 0) {
+			const userData = users?.value?.user.map(data => {
+				return { "id": data._id, "fullname": data.name, "email": data.email, "phone": data.phoneno.toString(), url: `edit/${data.id}` }
 			})
 			setRows(userData)
 		}
@@ -105,29 +106,29 @@ function List() {
 	//GRID COLUMN
 	const columns = [
 		{
-			field: 'id', headerName: 'Merchant ID #', 
-			minWidth:150,
-			maxWidth:200,
-			flex:1,	
+			field: 'id', headerName: 'Merchant ID #',
+			minWidth: 150,
+			maxWidth: 200,
+			flex: 1,
 		},
 		{
 			field: 'fullname',
 			headerName: 'Merchant Name',
-			minWidth:150,
+			minWidth: 150,
 			flex: 1
 		},
 		{
 			field: 'email',
 			headerName: 'Merchant Email',
-			minWidth:150,
-			flex:1,
+			minWidth: 150,
+			flex: 1,
 		},
 		{
 			field: 'phone',
 			headerName: 'Merchant Phone #',
 			type: 'number',
-			minWidth:150,
-			flex:1,
+			minWidth: 150,
+			flex: 1,
 			align: 'left',
 			headerAlign: 'left'
 		},
@@ -137,7 +138,7 @@ function List() {
 
 				return <Link onClick={() => { setEditUser(cellValues.row); handleOpen() }} className={Style.col_btn}>Edit details</Link>;
 			},
-			minWidth:150,
+			minWidth: 150,
 			filterable: false
 		}
 	];
@@ -153,13 +154,13 @@ function List() {
 		},
 		'.MuiDataGrid-cellContent': {
 			fontFamily: "AxiformaRegular",
-			fontSize : "14px",
+			fontSize: "14px",
 			color: '#303030'
 		},
-		'.MuiDataGrid-columnHeaderTitleContainerContent':{
+		'.MuiDataGrid-columnHeaderTitleContainerContent': {
 			fontFamily: 'AxiformaSemiBold',
 			color: '#000',
-			fontSize : "14px",
+			fontSize: "14px",
 		}
 	}
 

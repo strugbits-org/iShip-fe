@@ -30,8 +30,8 @@ function Nav() {
                 </div>
             </div>
             <div className="flex align_c navBar_content">
-                <h6 className='display_name'>{auth?.firstName} {auth?.lastName}</h6>
-                <span className='avatar flex align_c justify_c'>{auth?.firstName.slice(0, 1)}</span>
+                <h6 className='display_name'>{auth?.user.name}</h6>
+                <span className='avatar flex align_c justify_c'>{auth?.user.name.slice(0, 1)}</span>
             </div>
         </nav>
     );
