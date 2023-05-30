@@ -36,12 +36,13 @@ function createReducers() {
 }
 
 function createExtraActions() {
-    const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
+    // const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
 
     return {
         login: login(),
         logout: logout(),
-        forgot: forgot()
+        forgot: forgot(),
+        reset: reset()
     };
 
     function login() {
@@ -78,6 +79,24 @@ function createExtraActions() {
                     console.log(user);
 
                     dispatch(alertActions.success(`Check your email address for the password reset link.`));
+
+                } catch (error) {
+                    dispatch(alertActions.error(error));
+                }
+            }
+        );
+    }
+    function reset() {
+        return createAsyncThunk(
+            `${name}/reset`,
+            async function ({ password, auth }, { dispatch }) {
+                dispatch(alertActions.clear());
+                try {
+                    console.log(password, auth);
+                    const user = await fetchWrapper.post(`https://iship.herokuapp.com/reset-password`, { password },auth);
+                    console.log(user);
+
+                    dispatch(alertActions.success(`Password reset successfully`));
 
                 } catch (error) {
                     dispatch(alertActions.error(error));

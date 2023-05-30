@@ -18,8 +18,9 @@ function Reset() {
 
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
-    let auth = searchParams.get('id')
+    let auth = searchParams.get('authorization')
     console.log("authorization", auth);
+
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -37,8 +38,8 @@ function Reset() {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors, isSubmitting } = formState;
 
-    function onSubmit({ email }) {
-        return dispatch(authActions.forgot({ email }));
+    function onSubmit({ password }) {
+        return dispatch(authActions.reset({ password, auth }));
     }
 
     return (

@@ -9,7 +9,7 @@ export const fetchWrapper = {
 };
 
 function request(method) {
-    return (url, body) => {
+    return (url, body, token) => {
         const requestOptions = {
             method,
             headers: authHeader(url),
@@ -17,6 +17,9 @@ function request(method) {
         if (body) {
             requestOptions.headers['Content-Type'] = 'application/json';
             requestOptions.body = JSON.stringify(body);
+        }
+        if (token) {
+            requestOptions.headers['Authorization'] = token;
         }
         // console.log("requestOptions", requestOptions);
         return fetch(url, requestOptions).then(handleResponse);
