@@ -2,20 +2,30 @@ import Bg from '../../_assets/images/signinBg.png';
 import Style from "./style.module.css";
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-import { authActions } from '_store';
+// import { authActions } from '_store';
 
-export { Forget };
+export { Reset };
 
-function Forget() {
-    const dispatch = useDispatch();
+function Reset() {
+    // const dispatch = useDispatch();
+
+    // Add these variables to your component to track the state
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     // form validation rules 
     const validationSchema = Yup.object().shape({
-        email: Yup.string().required('Email is required'),
+        password: Yup.string()
+            .required('Password is required')
+            .min(6, 'Password must be at least 6 characters')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -24,7 +34,7 @@ function Forget() {
     const { errors, isSubmitting } = formState;
 
     function onSubmit({ email }) {
-        return dispatch(authActions.forgot({ email }));
+        // return dispatch(authActions.forgot({ email }));
     }
 
     return (
@@ -42,18 +52,25 @@ function Forget() {
                         </Link>
                     </div>
                     <h1 className={Style.auth_title} style={{ textAlign: "center", marginBottom: "50px" }}>
-                        Forgot your password?
+                        Reset your password
                     </h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className={Style.input_wrapper}>
-                            <input placeholder='Email Address*' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
-                            <div className={Style.invalid_feedback}>{errors.email?.message}</div>
+                            <div className={Style.password_field}>
+                                <input placeholder='Enter your password' name="password"
+                                    type={showPassword ? 'text' : 'password'} {...register('password')}
+                                    className={`${errors.password ? 'is-invalid' : ''} theme_input`} />
+                                <span className={Style.pass_icon} aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword} > {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />} </span>
+                            </div>
+                            <div className={Style.invalid_feedback}>{errors.password?.message}</div>
                         </div>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
                             <button disabled={isSubmitting} className={Style.theme_btn}>
                                 {isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
-                                Reset Password
+                                Update Password
                             </button>
                         </div>
                         <span className={Style.auth_link} style={{ textAlign: "center" }}>
