@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Style from './style.module.css';
 import Styles from "../account/style.module.css";

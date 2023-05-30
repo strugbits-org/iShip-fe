@@ -4,18 +4,22 @@ import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useSearchParams } from 'react-router-dom';
 import * as Yup from 'yup';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-// import { authActions } from '_store';
+import { authActions } from '_store';
 
 export { Reset };
 
 function Reset() {
-    // const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
+    let auth = searchParams.get('id')
+    console.log("authorization", auth);
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -34,7 +38,7 @@ function Reset() {
     const { errors, isSubmitting } = formState;
 
     function onSubmit({ email }) {
-        // return dispatch(authActions.forgot({ email }));
+        return dispatch(authActions.forgot({ email }));
     }
 
     return (

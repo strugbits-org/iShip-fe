@@ -50,7 +50,7 @@ function createExtraActions() {
             async function ({ email, password }, { dispatch }) {
                 dispatch(alertActions.clear());
                 try {
-                    const user = await fetchWrapper.post(`http://localhost:4567/login`, { email, password });
+                    const user = await fetchWrapper.post(`https://iship.herokuapp.com/login`, { email, password });
 
                     // set auth user in redux state
                     dispatch(authActions.setAuth(user));
@@ -74,10 +74,10 @@ function createExtraActions() {
             async function ({ email }, { dispatch }) {
                 dispatch(alertActions.clear());
                 try {
-                    const user = await fetchWrapper.post(`${baseUrl}/forgot-password`, { email });
+                    const user = await fetchWrapper.post(`https://iship.herokuapp.com/forgot-password`, { email });
                     console.log(user);
 
-                    dispatch(alertActions.success(`Reset password link sent to "${user.email}"`));
+                    dispatch(alertActions.success(`Check your email address for the password reset link.`));
 
                 } catch (error) {
                     dispatch(alertActions.error(error));

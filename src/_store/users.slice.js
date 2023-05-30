@@ -49,14 +49,14 @@ function createExtraActions() {
     function register() {
         return createAsyncThunk(
             `${name}/register`,
-            async (user) => await fetchWrapper.post(`http://localhost:4567/register`, user)
+            async (user) => await fetchWrapper.post(`https://iship.herokuapp.com/register`, user)
         );
     }
 
     function addUser() {
         return createAsyncThunk(
             `${name}/addUser`,
-            async (user) => await fetchWrapper.post(`http://localhost:4567/user/user-profile`, user)
+            async (user) => await fetchWrapper.post(`https://iship.herokuapp.com/user/user-profile`, user)
         );
     }
 
@@ -64,7 +64,7 @@ function createExtraActions() {
         // console.log("token", token);
         return createAsyncThunk(
             `${name}/getAll`,
-            async () => await fetchWrapper.get(`http://localhost:4567/user/get-users`)
+            async () => await fetchWrapper.get(`https://iship.herokuapp.com/user/get-users`)
         );
     }
     function getById() {
@@ -78,7 +78,7 @@ function createExtraActions() {
         return createAsyncThunk(
             `${name}/update`,
             async function ({ id, data }) {
-                await fetchWrapper.patch(`http://localhost:4567/user/update-profile?id=${id}`, data);
+                await fetchWrapper.patch(`https://iship.herokuapp.com/user/update-profile?id=${id}`, data);
             }
         );
     }

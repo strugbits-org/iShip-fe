@@ -31,7 +31,7 @@ function authHeader(url) {
     const token = authToken();
     const isLoggedIn = !!token;
     // const isApiUrl = url.startsWith(process.env.FRONTEND_URL_PORT);
-    const isApiUrl = url.startsWith('http://localhost:4567');
+    const isApiUrl = url.startsWith('https://iship.herokuapp.com');
     if (isLoggedIn && isApiUrl) {
         // return { Authorization: `Bearer ${token}` };
         return { Authorization: `${token}` };
