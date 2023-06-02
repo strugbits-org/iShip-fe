@@ -20,12 +20,16 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
+    //Phone Number validation
+    let phoneRejex =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     // form validation rules 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .required('First Name is required'),
-        phoneno: Yup.string().matches(/^\d{11}$/, { message: "Please enter valid number.", excludeEmptyString: false }),
+        phoneno: Yup.string()
+        .required("Phone Number is required")
+        .matches(phoneRejex, "Phone Number is not valid"),
         email: Yup.string().email()
             .required('email is required'),
         password: Yup.string()

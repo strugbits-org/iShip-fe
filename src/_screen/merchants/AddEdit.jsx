@@ -26,14 +26,17 @@ function AddEdit({ handleClose, id }) {
     const dispatch = useDispatch();
     const user = useSelector(x => x.users.list);
     // console.log("user-->", user);
-
+    let phoneRejex =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
     // form validation rules 
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .required('First Name is required'),
         email: Yup.string()
             .required('Email is required').email(),
-        phoneno: Yup.string().matches(/^\d{11}$/, { message: "Please enter valid number.", excludeEmptyString: false }),
+        phoneno: Yup.string()
+        .required("Phone Number is required")
+        .matches(phoneRejex, "Phone Number is not valid"),
         password: Yup.string()
             .transform(x => x === '' ? undefined : x)
             // password optional in edit mode 
@@ -109,7 +112,7 @@ function AddEdit({ handleClose, id }) {
                                 <div className={Styles.invalid_feedback}>{errors.name?.message}</div>
                             </div>
                             <div className={Styles.input_wrapper}>
-                                <input placeholder='Phone Number' name="phoneno" type="number" {...register('phoneno')} className={`${errors.phoneno ? 'is-invalid' : ''} theme_input`} />
+                                <input placeholder='Phone Number' name="phoneno" type="text" {...register('phoneno')} className={`${errors.phoneno ? 'is-invalid' : ''} theme_input`} />
                                 <div className={Styles.invalid_feedback}>{errors.phoneno?.message}</div>
                             </div>
                         </div>
