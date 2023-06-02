@@ -1,14 +1,15 @@
 import Style from './style.module.css'
-// import { OrdersList } from './Orderlist';
+import { useSelector } from 'react-redux';
 
 export { Orders };
 
 function Orders() {
+    const mobile = useSelector(x => x.mobile.value)
     const handleSubmit = () => {
-        console.log("submit");
+        // console.log("submit");
     }
     return (
-        <div className={Style.order_mainContainer}>
+        <div className={Style.order_mainContainer} style={{ marginLeft: mobile ? mobile.class : "290px" }}>
             <div className={Style.filters_wrapper}>
                 <h6 className={Style.filter_title}>Filters</h6>
                 <hr style={{ borderColor: "#dcdcdc", opacity: .3 }} />

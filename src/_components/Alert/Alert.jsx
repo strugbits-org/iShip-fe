@@ -22,7 +22,7 @@ function Alert() {
         // console.log("alert", alert);
         alert?.type === "success" ?
             toast.success(alert?.message, {
-                position: "top-right",
+                position: "top-left",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -33,7 +33,7 @@ function Alert() {
             })
             :
             toast.error(alert?.message, {
-                position: "top-right",
+                position: "top-left",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

@@ -19,7 +19,12 @@ function Sidebar() {
 
     //TOGGLE sidebar component
     const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(!sidebar);
+    const showSidebar = () => {
+        setSidebar(!sidebar);
+        !sidebar ?
+        dispatch(mobileActions.closeSideBar("90px"))
+        :dispatch(mobileActions.closeSideBar("290px"))
+    }
 
 
     // only show nav when logged in
@@ -33,14 +38,14 @@ function Sidebar() {
                     <Link to="/">
                         {sidebar ?
                             <img
-                                src="/images/iships_icon.svg"
+                                src="/images/iship_icon.png"
                                 alt="Logo"
-                                width="50px"
-                                height="40px"
+                                width="45px"
+                                height="54px"
                             />
                             :
                             <img
-                                src="/images/logo_light.png"
+                                src="/images/I-Ship_logo.png"
                                 alt="Logo"
                                 width="160px"
                                 height="50px"

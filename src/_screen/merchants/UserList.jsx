@@ -4,19 +4,17 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Style from './style.module.css';
 import AddIcon from '@mui/icons-material/Add';
-import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
-import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import PropTypes from 'prop-types';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
-// import Typography from '@mui/material/Typography';
 import { useSpring, animated } from '@react-spring/web';
 import { AddEdit } from './AddEdit';
 import { userActions } from '_store';
+import Input from '@mui/material/Input';
 
 export { List };
 //<Model Styling>
@@ -64,12 +62,22 @@ Fade.propTypes = {
 
 function List() {
 
-	// console.log("auth", token);
 	const [open, setOpen] = React.useState(false);
 	const [rows, setRows] = React.useState([]);
 	const [editUser, setEditUser] = React.useState('');
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+	const mobile = useSelector(x => x.mobile.value)
+	//MERCHANTS SEARCH FILTER
+	const [searchValue, setSeatchValue] = React.useState('');
+	const [search, setSearch] = React.useState(searchValue);
+
+	const handleChange = (event) => {
+		setSeatchValue(event.target.value);
+	};
+	const handleClick = () => {
+		setSearch(searchValue);
+	};
 
 	const users = useSelector(x => x.users.list);
 	// console.log("users====> ", users);
@@ -83,39 +91,47 @@ function List() {
 
 	//SET GRID ROW
 	useEffect(() => {
-		// console.log("user inside: ", users?.value?.user);
-		if (users?.value?.user?.length > 0) {
-			const userData = users?.value?.user.map(data => {
-				return { "id": data._id, "fullname": data.name, "email": data.email, "phone": data.phoneno.toString(), url: `edit/${data.id}` }
-			})
-			setRows(userData)
-		}
-	}, [users]);
 
-	//DUMMY DATA SEARCH FIELD
-	const dummyDAta = [
-		{ title: 'The Shawshank Redemption', year: 1994 },
-		{ title: 'The Godfather', year: 1972 },
-		{ title: 'The Godfather: Part II', year: 1974 },
-		{ title: 'The Dark Knight', year: 2008 },
-		{ title: '12 Angry Men', year: 1957 },
-		{ title: "Schindler's List", year: 1993 },
-		{ title: 'Pulp Fiction', year: 1994 },
-	]
+		const data = users?.value?.user
+		// console.log("data", data);
+		if (search) {
+			const filterData = data?.filter(x => {
+				const filteredObj = x.name.toLowerCase().includes(search) || x._id.toLowerCase().includes(search)
+				return filteredObj
+			})
+			// console.log("filterData", filterData);
+			if (users?.value?.user?.length > 0) {
+				const userData = filterData.map(data => {
+					return { "id": data._id, "fullname": data.name, "email": data.email, "phone": data.phoneno.toString(), url: `edit/${data.id}` }
+				})
+				setRows(userData)
+			}
+		}
+		else {
+			// console.log("search", data);
+			if (data?.length > 0) {
+				const userData = data?.map(data => {
+					return { "id": data._id, "fullname": data.name, "email": data.email, "phone": data.phoneno.toString(), url: `edit/${data.id}` }
+				})
+				setRows(userData)
+			}
+		}
+
+	}, [search, users]);
 
 	//GRID COLUMN
 	const columns = [
 		{
 			field: 'id', headerName: 'Merchant ID #',
 			minWidth: 150,
-			maxWidth: 200,
-			flex: 1,
+			maxWidth: 300,
+			flex: 2,
 		},
 		{
 			field: 'fullname',
 			headerName: 'Merchant Name',
-			minWidth: 150,
-			flex: 1
+			minWidth: 120,
+			flex: .8
 		},
 		{
 			field: 'email',
@@ -149,6 +165,13 @@ function List() {
 		'.MuiDataGrid-columnSeparator': {
 			display: 'none',
 		},
+		".MuiDataGrid-overlayWrapperInner": {
+			maxHeight: "500px",
+			minHeight: "500px"
+		},
+		'.MuiDataGrid-overlayWrapper': {
+			height: "100%!important"
+		},
 		'&.MuiDataGrid-root': {
 			border: '',
 		},
@@ -163,38 +186,35 @@ function List() {
 			fontSize: "14px",
 		}
 	}
+	function NoRowsOverlay() {
+		return (
+			<div className={Style.notFound}></div>
+		);
+	}
 
-	// console.log("editUser: ", editUser);
+	function NoResultsOverlay() {
+		return (
+			<div className={Style.notFound}></div>
+		);
+	}
 	return (
-		<div className={Style.sections}>
-			<div className={Style.main_container}>
+		<div className={Style.sections} style={{ marginLeft: mobile ? mobile.class : "290px" }}>
+			<div className={Style.main_container} >
 				<div className={Style.head}>
 					<h1 className={Style.title}>Merchants</h1>
 					<div className={Style.add_search}>
+
 						<div className={Style.search}>
-							<Autocomplete
-								className={Style.search_input}
-								freeSolo
-								sx={{ width: "100%", border: "none" }}
-								id="free-solo-2-demo"
-								disableClearable
-								options={dummyDAta.map((option) => option.title)}
-								renderInput={(params) => (
-									<TextField
-										className={Style.search_field}
-										{...params}
-										label="Search by ID, Name"
-										InputProps={{
-											...params.InputProps,
-											type: 'search',
-										}}
-									/>
-								)}
+							<Input
+								sx={{ height: "100%", width: "100%", padding: "10px" }}
+								placeholder="Search by ID, Name"
+								// onChange={e => setSearch(e.target.value)} className={Style.search_field} 
+								onChange={handleChange}
+								value={searchValue}
 							/>
-							<div className={Style.serach_box}>
+							<div onClick={handleClick} className={Style.serach_box} >
 								<SearchIcon className={Style.search_icons} /></div>
 						</div>
-						{/* <Button to="add" >Open modal</Button> */}
 						<Link onClick={() => {
 							setEditUser('')
 							handleOpen()
@@ -214,14 +234,15 @@ function List() {
 							className={Style.data}
 							rows={rows}
 							columns={columns}
+							components={{ NoRowsOverlay, NoResultsOverlay }}
 							initialState={{
 								pagination: {
 									paginationModel: {
-										pageSize: 8,
+										pageSize: 10,
 									},
 								},
 							}}
-							pageSizeOptions={[5]}
+							pageSizeOptions={[5, 10, 15]}
 							checkboxSelection
 							disableRowSelectionOnClick
 						/>

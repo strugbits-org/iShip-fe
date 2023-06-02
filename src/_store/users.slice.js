@@ -26,10 +26,10 @@ function createInitialState() {
 }
 
 function createExtraActions() {
-    // const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
-    const baseUrl = `${process.env.BACKEND_URL}`;
+    const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
+    // const baseUrl = `${process.env.BACKEND_URL}`;
 
-    console.log("baseUrl", baseUrl);
+    // console.log("baseUrl", baseUrl);
     return {
         register: register(),
         addUser: addUser(),
@@ -50,6 +50,7 @@ function createExtraActions() {
         return createAsyncThunk(
             `${name}/register`,
             async (user) => await fetchWrapper.post(`https://iship.herokuapp.com/register`, user)
+
         );
     }
 

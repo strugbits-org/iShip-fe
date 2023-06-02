@@ -4,6 +4,9 @@
     width: 300px;
     max-width: 290px;
     height: 100vh;
+    position: fixed;
+    background: #fff;
+    z-index: 1111;
 }
 
 .sidebar.close{
@@ -11,6 +14,7 @@
 }
 .sidebar.close .sidebar_logo{
     gap: 0px;
+    margin-left:10px
 }
 .menu_bars{
     height: 20px;
@@ -34,12 +38,12 @@
     justify-content: space-between;
 }
 
-img.sidebar_icons {
+.sidebar_icons {
     height: 20px;
     width: 20px;
 }
 
-span.sidebar_link {
+.sidebar_link {
     font-size: 16px;
     font-family: AxiformaRegular;
     color: var(--textDard);
@@ -91,7 +95,7 @@ a.menu_item_wrapper.active {
         position: fixed;
         background-color: #fff;
         box-shadow: -5px 11px 12px 6px #13111143;
-        z-index: 111;
+        z-index: 999;
     }
     .menu_bars{
         display: none;

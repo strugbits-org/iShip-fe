@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { List, AddEdit, DeleteUser } from '.';
+import { List, AddEdit } from '.';
 
 export { UsersLayout };
 
@@ -10,7 +10,6 @@ function UsersLayout() {
             <Route index element={<List />} />
             <Route path="add" element={<AddEdit />} />
             <Route path="edit/:id" element={<AddEdit />} />
-            <Route path="delete/:id" element={<DeleteUser />} />
         </Routes>
     );
 }

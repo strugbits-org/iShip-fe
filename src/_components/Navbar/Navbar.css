@@ -6,7 +6,14 @@
     justify-content: flex-end;
     padding: 35px;
 }
-
+nav.navBar.flex.align_c {
+    position: fixed;
+    top: 0;
+    right: 0;
+    position: fixed;
+    background: #fff;
+    z-index: 111;
+}
 .display_name {
     font-size: 18px;
     font-family: AxiformaMedium;
@@ -23,7 +30,7 @@
     width: 55px;
     height: 55px;
     background-color: var(--primaryColor);
-    color: var(--textWhite);
+    color: var(--textLight);
     font-size: 26px;
     font-family: AxiformaMedium;
     border-radius: 50%;

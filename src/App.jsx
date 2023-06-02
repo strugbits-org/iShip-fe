@@ -1,5 +1,4 @@
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-
 import { history } from '_helpers';
 import { Nav, Alert, PrivateRoute, Sidebar } from '_components';
 import { Orders } from '_screen/orders';
@@ -13,13 +12,14 @@ function App() {
     // anywhere in the react app (inside or outside components)
     history.navigate = useNavigate();
     history.location = useLocation();
-
+   
     return (
         <div className='main_container flex'>
             <Alert />
             <Sidebar />
+
+            <Nav />
             <div className='main_content'>
-                <Nav />
                 <Routes>
                     {/* private */}
                     <Route element={<PrivateRoute />}>

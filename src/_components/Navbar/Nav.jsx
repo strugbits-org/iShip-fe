@@ -19,14 +19,14 @@ function Nav() {
             <div className="nav_logo align_c" style={{ textAlign: "center" }}>
                 <Link className='logo' to="/">
                     <img
-                        src="/images/logo_light.png"
+                        src="/images/I-Ship_logo.png"
                         alt="Logo"
                         width="150px"
                         height="50px"
                     />
                 </Link>
                 <div>
-                    <MenuIcon className='menu_bars' onClick={() => dispatch(mobileActions.showMobile("showOnMobile"))} />
+                    <MenuIcon className='menu_bars' onClick={() => {dispatch(mobileActions.showMobile("showOnMobile"))}} />
                 </div>
             </div>
             <div className="flex align_c navBar_content">

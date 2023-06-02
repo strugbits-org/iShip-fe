@@ -1,4 +1,4 @@
-import Bg from '../../_assets/images/signinBg.png';
+import Bg from '../../_assets/images/signupBg.png';
 import Style from "./style.module.css";
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -44,10 +44,10 @@ function Login() {
                     <div className={Style.logo_auth}>
                         <Link to="/">
                             <img
-                                src="/images/logo_light.png"
+                                src="/images/I-Ship_logo.png"
                                 alt="Logo"
-                                width="235px"
-                                height="80px"
+                                width="300px"
+                                height="70px"
                             />
                         </Link>
                     </div>
@@ -79,7 +79,11 @@ function Login() {
                         </span>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
                             <button disabled={isSubmitting} className={Style.theme_btn}>
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
+                            {isSubmitting &&
+                                    setTimeout(() => {
+                                        <span className="spinner"></span>
+                                    }, 300)
+                                }
                                 Login
                             </button>
                         </div>

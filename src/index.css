@@ -3,7 +3,7 @@
     --textHeadingBlack: #1f1f1f;
     --textDard: #000;
     --textLight: #fff;
-    --primaryColor: #ff9400;
+    --primaryColor: #019BF6;
     --inputColor: #dcdcdc;
     --error: #FF0000;
     --transition03s: .3s all ease-in-out;
@@ -37,6 +37,20 @@ ul li {
     justify-content: center;
 }
 
+.spinner {
+    background: url("./_assets/icons/loader.gif");
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
 .theme_input {
     border: 1px solid rgb(157 157 157 / 50%);
     border-radius: 5px;
@@ -47,6 +61,12 @@ ul li {
     font-family: AxiformaMedium;
     font-size: 16px;
     width: 100%;
+}
+
+.theme_input:disabled {
+    background-color: #dedede;
+    cursor: none;
+    color: #969696;
 }
 
 .theme_input::placeholder {
@@ -67,7 +87,11 @@ ul li {
     background-position: right calc(0.375em + 0.1875rem) center;
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
-.theme_input.is-invalid .pass_icon{display: none;} 
+
+.theme_input.is-invalid .pass_icon {
+    display: none;
+}
+
 @font-face {
     font-family: AxiformaBlack;
     src: url(./_assets/fonts/Axiforma-Black.ttf);
@@ -123,5 +147,11 @@ ul li {
 @media (max-width: 991px) {
     .theme_input {
         height: 50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main_content {
+        margin: 0 !important;
     }
 }

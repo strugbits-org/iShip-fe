@@ -68,7 +68,7 @@ function fakeBackend() {
                 }
 
                 user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
-                users.push(user);
+                // users.push(user);
                 localStorage.setItem(usersKey, JSON.stringify(users));
                 return ok();
             }

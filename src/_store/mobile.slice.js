@@ -23,7 +23,9 @@ function createInitialState() {
 function createReducers() {
     return {
         showMobile,
-        hideMobile
+        hideMobile,
+        activeSidebar,
+        closeSideBar
     };
 
     // payload can be a string message ('mobile message') or 
@@ -35,6 +37,18 @@ function createReducers() {
         };
     }
     function hideMobile(state, action) {
+        state.value = {
+            type: 'true',
+            class: action.payload
+        };
+    }
+    function activeSidebar(state, action) {
+        state.value = {
+            type: 'true',
+            class: action.payload
+        };
+    }
+    function closeSideBar(state, action) {
         state.value = {
             type: 'true',
             class: action.payload

@@ -21,6 +21,7 @@ function AddEdit({ handleClose, id }) {
 
     const [title, setTitle] = useState();
     const [label, setLabel] = useState();
+    const [filedDisable, setFiledDisable] = useState()
 
     const dispatch = useDispatch();
     const user = useSelector(x => x.users.list);
@@ -49,9 +50,11 @@ function AddEdit({ handleClose, id }) {
         if (id) {
             setTitle('Edit Merchant Detail');
             setLabel('UPDATE');
+            setFiledDisable("disabled")
             // fetch user details into redux state and 
             // populate form fields with reset()
             // and filter by props id
+
             dispatch(userActions.getAll())
                 .then(user => {
                     const userArr = user?.payload?.user
@@ -107,7 +110,7 @@ function AddEdit({ handleClose, id }) {
                             </div>
                         </div>
                         <div className={Styles.input_wrapper}>
-                            <input placeholder='Email Address' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
+                            <input disabled={filedDisable} placeholder='Email Address' name="email" type="text" {...register('email')} className={`${errors.email ? 'is-invalid' : ''} theme_input`} />
                             <div className={Styles.invalid_feedback}>{errors.email?.message}</div>
                         </div>
                         <div className={Styles.input_wrapper}>
@@ -127,7 +130,7 @@ function AddEdit({ handleClose, id }) {
                         </div>
                         <div className={Styles.input_row} style={{ gap: "20px" }}>
                             <button type="submit" disabled={isSubmitting} className={Styles.theme_btn}>
-                                {isSubmitting && <span className="spinner-border spinner-border-sm me-1"></span>}
+                                {isSubmitting && <span className="spinner"></span>}
                                 {label}
                             </button>
                         </div>
