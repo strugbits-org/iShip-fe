@@ -15,7 +15,7 @@ export { Login };
 
 function Login() {
     const dispatch = useDispatch();
-
+    const [disabled, setDisabled] = useState(false)
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -24,7 +24,7 @@ function Login() {
     // form validation rules 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email()
-        .required('email is required'),
+            .required('email is required'),
         password: Yup.string().required('Password is required')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
@@ -34,7 +34,12 @@ function Login() {
     const { errors, isSubmitting } = formState;
 
     function onSubmit({ email, password }) {
+        setDisabled(true)
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2500);
         return dispatch(authActions.login({ email, password }));
+
     }
 
     return (
@@ -78,11 +83,9 @@ function Login() {
                             <Link to="../forgot-password">Forgot password?</Link>
                         </span>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
-                            <button disabled={isSubmitting} className={Style.theme_btn}>
-                            {isSubmitting &&
-                                    setTimeout(() => {
-                                        <span className="spinner"></span>
-                                    }, 300)
+                            <button disabled={disabled} className={Style.theme_btn}>
+                                {isSubmitting && disabled &&
+                                    disabled ? <span className="spinner"></span> : ""
                                 }
                                 Login
                             </button>

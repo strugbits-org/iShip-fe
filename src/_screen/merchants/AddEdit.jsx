@@ -13,7 +13,7 @@ export { AddEdit };
 
 function AddEdit({ handleClose, id }) {
     // console.log("id", id);
-
+    const [disabled, setDisabled] = useState(false)
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -72,6 +72,7 @@ function AddEdit({ handleClose, id }) {
 
     async function onSubmit(data) {
         dispatch(alertActions.clear());
+        setDisabled(true)
         try {
             // create or update user based on id param
             let message;
@@ -91,6 +92,9 @@ function AddEdit({ handleClose, id }) {
         } catch (error) {
             dispatch(alertActions.error(error));
         }
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2500);
     }
 
     return (
@@ -129,8 +133,8 @@ function AddEdit({ handleClose, id }) {
 
                         </div>
                         <div className={Styles.input_row} style={{ gap: "20px" }}>
-                            <button type="submit" disabled={isSubmitting} className={Styles.theme_btn}>
-                                {isSubmitting && <span className="spinner"></span>}
+                            <button type="submit" disabled={disabled} className={Styles.theme_btn}>
+                                {isSubmitting && disabled && <span className="spinner"></span>}
                                 {label}
                             </button>
                         </div>

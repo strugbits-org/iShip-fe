@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 import { authActions } from '_store';
 
@@ -12,7 +13,7 @@ export { Forget };
 
 function Forget() {
     const dispatch = useDispatch();
-
+    const [disabled, setDisabled] = useState(false)
     // form validation rules 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email()
@@ -25,6 +26,10 @@ function Forget() {
     const { errors, isSubmitting } = formState;
 
     function onSubmit({ email }) {
+        setDisabled(true)
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2500);
         return dispatch(authActions.forgot({ email }));
     }
 
@@ -52,8 +57,10 @@ function Forget() {
                             <div className={Style.invalid_feedback}>{errors.email?.message}</div>
                         </div>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
-                            <button disabled={isSubmitting} className={Style.theme_btn}>
-                                {isSubmitting && <span className="spinner"></span>}
+                            <button disabled={disabled} className={Style.theme_btn}>
+                                {isSubmitting && disabled &&
+                                    disabled ? <span className="spinner"></span> : ""
+                                }
                                 Reset Password
                             </button>
                         </div>

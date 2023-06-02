@@ -15,7 +15,7 @@ export { Register };
 
 function Register() {
     const dispatch = useDispatch();
-
+    const [disabled, setDisabled] = useState(false)
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -42,6 +42,7 @@ function Register() {
         // console.log("data", data);
         const email = data.email
         const password = data.password
+        setDisabled(true)
 
         dispatch(alertActions.clear());
         try {
@@ -53,6 +54,9 @@ function Register() {
         } catch (error) {
             dispatch(alertActions.error(error));
         }
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2500);
     }
 
     return (
@@ -99,11 +103,9 @@ function Register() {
                             <div className={Style.invalid_feedback} >{errors.password?.message}</div>
                         </div>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
-                            <button disabled={isSubmitting} className={Style.theme_btn}>
-                                {isSubmitting &&
-                                    setTimeout(() => {
-                                        <span className="spinner"></span>
-                                    }, 300)
+                            <button disabled={disabled} className={Style.theme_btn}>
+                                {isSubmitting && disabled &&
+                                    disabled ? <span className="spinner"></span> : ""
                                 }
                                 Register
                             </button>

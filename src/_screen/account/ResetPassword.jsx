@@ -15,7 +15,7 @@ import { authActions } from '_store';
 export { Reset };
 
 function Reset() {
-
+    const [disabled, setDisabled] = useState(false)
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
     let auth = searchParams.get('authorization')
@@ -39,6 +39,10 @@ function Reset() {
     const { errors, isSubmitting } = formState;
 
     function onSubmit({ password }) {
+        setDisabled(true)
+        setTimeout(() => {
+            setDisabled(false)
+        }, 2500);
         return dispatch(authActions.reset({ password, auth }));
     }
 
@@ -73,8 +77,10 @@ function Reset() {
                             <div className={Style.invalid_feedback}>{errors.password?.message}</div>
                         </div>
                         <div className={Style.button_wrapper} style={{ margin: "20px 0" }}>
-                            <button disabled={isSubmitting} className={Style.theme_btn}>
-                                {isSubmitting && <span className="spinner"></span>}
+                            <button disabled={disabled} className={Style.theme_btn}>
+                                {isSubmitting && disabled &&
+                                    disabled ? <span className="spinner"></span> : ""
+                                }
                                 Update Password
                             </button>
                         </div>

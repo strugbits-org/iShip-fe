@@ -94,9 +94,9 @@ const GridCellExpand = React.memo(function GridCellExpand(props) {
                         elevation={1}
                         style={{ minHeight: wrapper.current.offsetHeight - 3 }}
                     >
-                        <Typography variant="body2" style={{ padding: 8 }}>
+                        {/* <Typography variant="body2" style={{ padding: 8 }}>
                             {value}
-                        </Typography>
+                        </Typography> */}
                     </Paper>
                 </Popper>
             )}
@@ -177,7 +177,37 @@ const rows = [
         merchant: 'Sherman Mark',
         products: '2 items',
         date: 'April 16, 2023 2:58 AM',
-    }
+    },
+    {
+        id: 3,
+        order: '12545',
+        status: 'On the way',
+        amount: '$15.89',
+        store: 'Sherman Traders',
+        merchant: 'Sherman Mark',
+        products: '2 items',
+        date: 'April 16, 2023 2:58 AM',
+    },
+    {
+        id: 2,
+        order: '12545',
+        status: 'On the way',
+        amount: '$15.89',
+        store: 'Sherman Traders',
+        merchant: 'Sherman Mark',
+        products: '2 items',
+        date: 'April 16, 2023 2:58 AM',
+    },
+    {
+        id: 4,
+        order: '12545',
+        status: 'On the way',
+        amount: '$15.89',
+        store: 'Sherman Traders',
+        merchant: 'Sherman Mark',
+        products: '2 items',
+        date: 'April 16, 2023 2:58 AM',
+    },
 ];
 
 function OrdersList() {
