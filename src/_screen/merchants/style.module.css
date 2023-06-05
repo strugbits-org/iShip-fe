@@ -36,7 +36,7 @@
 }
 
 .title {
-    font-size: 36px;
+    font-size: 26px;
     text-align: center;
     font-family: AxiformaRegular;
     color: var(--textDard);
@@ -86,11 +86,15 @@
     color: var(--textLight);
     
 }
-.notFound{
-    background: url("../../_assets/images/not-fount.jpg") no-repeat;
+.container_Notfound{
     height: 500px;
+    padding: 40px;
+}
+.notFound{
+    background: url("../../_assets/images/no-result.png") no-repeat;
     background-size: contain;
     background-position: center;
+    height: 100%;
 }
 .serach_box {
     height: 40px;
@@ -145,7 +149,6 @@
 
 
 .data {
-    /* max-height: 800px; */
     overflow: scroll;
     min-height: 500px;
 }

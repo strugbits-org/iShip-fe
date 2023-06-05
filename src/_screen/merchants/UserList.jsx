@@ -186,24 +186,29 @@ function List() {
 			fontSize: "14px",
 		}
 	}
+
 	function NoRowsOverlay() {
 		return (
-			<div className={Style.notFound}></div>
+			<div className={Style.container_Notfound}>
+				<div className={Style.notFound}></div>
+			</div>
 		);
 	}
 
 	function NoResultsOverlay() {
 		return (
-			<div className={Style.notFound}></div>
+			<div className={Style.container_Notfound}>
+				<div className={Style.notFound}></div>
+			</div>
 		);
 	}
+
 	return (
 		<div className={Style.sections} style={{ marginLeft: mobile ? mobile.class : "290px" }}>
 			<div className={Style.main_container} >
 				<div className={Style.head}>
 					<h1 className={Style.title}>Merchants</h1>
 					<div className={Style.add_search}>
-
 						<div className={Style.search}>
 							<Input
 								sx={{ height: "100%", width: "100%", padding: "10px" }}
@@ -224,6 +229,7 @@ function List() {
 						</Link>
 					</div>
 				</div>
+
 				<div className={Style.userList}>
 
 					<Box sx={{ height: "100%", width: '100%', background: "#fff" }}>
