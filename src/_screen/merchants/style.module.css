@@ -145,10 +145,9 @@
 
 
 .data {
-    max-height: 800px;
+    /* max-height: 800px; */
     overflow: scroll;
     min-height: 500px;
-    /* max-height: 700px; */
 }
 
 .modelBox {
