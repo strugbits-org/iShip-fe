@@ -169,6 +169,12 @@ ul li {
     }
 }
 
+@media (max-width:1400px) and (min-width : 991px){
+    .theme_input{
+        height: 50px;
+        font-size: 14px;
+    }
+}
 @media (max-width: 1024px) {
     .main_content {
         margin: 0 !important;
