@@ -90,42 +90,50 @@
 .input_row .input_wrapper {
     width: 48%;
 }
-.auth_link{
+
+.auth_link {
     display: flex;
     justify-content: center;
     color: var(--textHeadingBlack);
     font-size: 18px;
-    font-family: AxiformaMedium;    
+    font-family: AxiformaMedium;
 }
+
 .auth_link a {
     color: var(--primaryColor);
     font-size: 18px;
     font-family: AxiformaMedium;
 }
-.auth_forget{
+
+.auth_forget {
     margin-bottom: 40px;
     display: flex;
 }
+
 .auth_forget a {
     font-family: AxiformaMedium;
     font-size: 18px;
     color: var(--textDard);
 
 }
-.invalid_feedback{
-    color:var(--error);
-    font-size:14px;
+
+.invalid_feedback {
+    color: var(--error);
+    font-size: 14px;
     font-family: AxiformaRegular;
 }
-.logo_auth{
+
+.logo_auth {
     margin-bottom: 100px;
     text-align: center;
 }
-.password_field{
+
+.password_field {
     width: 100%;
     position: relative;
 }
-.pass_icon{
+
+.pass_icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -133,62 +141,93 @@
     color: var(--inputColor);
 }
 
-.theme_btn:disabled{
+.theme_btn:disabled {
     background-color: #dedede;
     cursor: none;
     color: #d3d3d3;
 }
 
 
-@media (max-width:1400px) and (min-width : 991px){
-    .theme_btn{
+@media (max-width:1400px) and (min-width : 991px) {
+    .theme_btn {
         height: 50px;
         font-size: 16px;
     }
-    .auth_forget a, .auth_link, .auth_link a{
+
+    .auth_forget a,
+    .auth_link,
+    .auth_link a {
         font-size: 16px;
     }
-    .auth_title{font-size: 28px;}
-    .aut_subtitle{font-size: 16px;}
-    .logo_auth{margin-bottom: 60px;}
+
+    .auth_title {
+        font-size: 28px;
+    }
+
+    .aut_subtitle {
+        font-size: 16px;
+    }
+
+    .logo_auth {
+        margin-bottom: 60px;
+    }
 }
 
 /* laptop styling */
 @media (max-width: 991px) {
-    .auth_content_wrapper{
+    .auth_content_wrapper {
         width: 90%;
     }
+
     .auth_image_section {
         display: none;
     }
-    .input_row{
+
+    .input_row {
         flex-direction: column;
     }
-    .input_row .input_wrapper{
+
+    .input_row .input_wrapper {
         width: 100%;
     }
-    .theme_input, .theme_btn {
+
+    .theme_input,
+    .theme_btn {
         height: 50px;
     }
-    .auth_forget a, .auth_link, .auth_link a{
+
+    .auth_forget a,
+    .auth_link,
+    .auth_link a {
         font-size: 16px;
     }
-    .title{
+
+    .title {
         font-size: 30px;
         margin-bottom: 20px;
     }
-    .auth_title{font-size: 22px;}
-    .aut_subtitle{font-size: 15px;}
-    .auth_content_wrapper{
+
+    .auth_title {
+        font-size: 22px;
+    }
+
+    .aut_subtitle {
+        font-size: 15px;
+    }
+
+    .auth_content_wrapper {
         padding: 0;
     }
+
     .auth_content {
         height: 100vh;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../_assets/images/signupBg.png');
     }
-    .logo_auth{
+
+    .logo_auth {
         margin-bottom: 50px;
     }
+
     .auth_section {
         width: 90%;
         background-color: var(--textHeadingWhite);
