@@ -231,7 +231,6 @@ function List() {
 				</div>
 
 				<div className={Style.userList}>
-
 					<Box sx={{ height: "100%", width: '100%', background: "#fff" }}>
 						<DataGrid
 							headerHeight={80}

@@ -8,7 +8,7 @@ export { PrivateRoute };
 function PrivateRoute() {
     const auth = useSelector(x => x.auth.value);
 
-    if (!auth) {
+    if (!auth?.token) {
         // not logged in so redirect to login page with the return url
         return <Navigate to="/account/login" state={{ from: history.location }} />
     }

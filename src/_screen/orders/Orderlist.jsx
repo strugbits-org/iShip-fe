@@ -128,41 +128,42 @@ renderCellExpand.propTypes = {
 };
 
 const columns = [
-    { field: 'order', headerName: 'Order No #', width: 150, renderCell: renderCellExpand },
+    { field: 'order', headerName: 'Order No #', width: 150,flex: 1, renderCell: renderCellExpand },
     {
         field: 'status',
         headerName: 'Status',
         width: 100,
+        flex: 1,
         renderCell: renderCellExpand,
     },
     {
         field: 'amount',
         headerName: 'Amount',
-        width: 150,
+        width: 150,flex: 1,
         renderCell: renderCellExpand,
     },
     {
         field: 'store',
         headerName: 'Store',
-        width: 150,
+        width: 150,flex: 1,
         renderCell: renderCellExpand,
     },
     {
         field: 'merchant',
         headerName: 'Merchant',
-        width: 150,
+        width: 150,flex: 1,
         renderCell: renderCellExpand,
     },
     {
         field: 'products',
         headerName: 'Products',
-        width: 150,
+        width: 150,flex: 1,
         renderCell: renderCellExpand,
     },
     {
         field: 'date',
         headerName: 'Created At',
-        width: 150,
+        width: 150,flex: 1,
         renderCell: renderCellExpand,
     },
 ];

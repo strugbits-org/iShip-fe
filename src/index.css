@@ -180,3 +180,31 @@ ul li {
         margin: 0 !important;
     }
 }
+.status{
+    padding: 6px 10px;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 5px;
+    font-family: AxiformaRegular;
+
+}
+.Ontheway{
+    background-color: #C8FFC7;
+    border: 1px solid #5EAE5C;
+    color: #5EAE5C;
+}
+.Cancelled{
+    background-color: #FFC7C7;
+    border: 1px solid #AE5C5C;
+    color: #AE5C5C;
+}
+.Delivered{
+    background-color: #E6F4FF;
+    border: 1px solid #4D8698;
+    color: #4D8698;
+}
+.Pending{
+    background-color: #FFEBBF;
+    border: 1px solid #E79A08;
+    color: #E79A08;
+}
