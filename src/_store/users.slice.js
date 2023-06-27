@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { authActions } from '_store';
+// import { authActions } from '_store';
 import { fetchWrapper } from '_helpers';
 
 // create slice
@@ -29,22 +29,14 @@ function createExtraActions() {
     const baseUrl = `${process.env.FRONTEND_URL_PORT}/users`;
     // const baseUrl = `${process.env.BACKEND_URL}`;
 
-    // console.log("baseUrl", baseUrl);
     return {
         register: register(),
         addUser: addUser(),
         getAll: getAll(),
         getById: getById(),
         update: update(),
-        delete: _delete(),
+        // delete: _delete(),
     };
-
-    // function register() {
-    //     return createAsyncThunk(
-    //         `${name}/register`,
-    //         async (user) => await fetchWrapper.post(`${baseUrl}/register`, user)    
-    //     );
-    // }
 
     function register() {
         return createAsyncThunk(
@@ -83,6 +75,13 @@ function createExtraActions() {
             }
         );
     }
+
+    // function register() {
+    //     return createAsyncThunk(
+    //         `${name}/register`,
+    //         async (user) => await fetchWrapper.post(`${baseUrl}/register`, user)    
+    //     );
+    // }
     // function getAll() {
     //     return createAsyncThunk(
     //         `${name}/getAll`,
@@ -114,26 +113,26 @@ function createExtraActions() {
 
 
     // prefixed with underscore because delete is a reserved word in javascript
-    function _delete() {
-        return createAsyncThunk(
-            `${name}/delete`,
-            async function (id, { getState, dispatch }) {
-                await fetchWrapper.delete(`${baseUrl}/${id}`);
+    // function _delete() {
+    //     return createAsyncThunk(
+    //         `${name}/delete`,
+    //         async function (id, { getState, dispatch }) {
+    //             await fetchWrapper.delete(`${baseUrl}/${id}`);
 
-                // auto logout if the logged in user deleted their own record
-                if (id === getState().auth.value?.id) {
-                    dispatch(authActions.logout());
-                }
-            }
-        );
-    }
+    //             // auto logout if the logged in user deleted their own record
+    //             if (id === getState().auth.value?.id) {
+    //                 dispatch(authActions.logout());
+    //             }
+    //         }
+    //     );
+    // }
 }
 
 function createExtraReducers() {
     return (builder) => {
         getAll();
         getById();
-        _delete();
+        // _delete();
 
         function getAll() {
             var { pending, fulfilled, rejected } = extraActions.getAll;
@@ -163,20 +162,20 @@ function createExtraReducers() {
                 });
         }
 
-        function _delete() {
-            var { pending, fulfilled, rejected } = extraActions.delete;
-            builder
-                .addCase(pending, (state, action) => {
-                    const user = state.list.value.find(x => x.id === action.meta.arg);
-                    user.isDeleting = true;
-                })
-                .addCase(fulfilled, (state, action) => {
-                    state.list.value = state.list.value.filter(x => x.id !== action.meta.arg);
-                })
-                .addCase(rejected, (state, action) => {
-                    const user = state.list.value.find(x => x.id === action.meta.arg);
-                    user.isDeleting = false;
-                });
-        }
+        // function _delete() {
+        //     var { pending, fulfilled, rejected } = extraActions.delete;
+        //     builder
+        //         .addCase(pending, (state, action) => {
+        //             const user = state.list.value.find(x => x.id === action.meta.arg);
+        //             user.isDeleting = true;
+        //         })
+        //         .addCase(fulfilled, (state, action) => {
+        //             state.list.value = state.list.value.filter(x => x.id !== action.meta.arg);
+        //         })
+        //         .addCase(rejected, (state, action) => {
+        //             const user = state.list.value.find(x => x.id === action.meta.arg);
+        //             user.isDeleting = false;
+        //         });
+        // }
     }
 }

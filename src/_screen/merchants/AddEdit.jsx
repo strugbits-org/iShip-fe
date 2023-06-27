@@ -8,6 +8,7 @@ import Styles from "../account/style.module.css";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { userActions, alertActions } from '_store';
+import { Loader } from '../../_components/loader';
 
 export { AddEdit };
 
@@ -144,9 +145,9 @@ function AddEdit({ handleClose, id }) {
                     </form>
                 }
                 {user?.loading &&
-                    <div className="text-center m-5">
-                        <span className="spinner-border spinner-border-lg align-center"></span>
-                    </div>
+                     <div style={{ textAlign: "center", marginTop: "40px" }}>
+                     <Loader />
+                 </div>
                 }
                 {user?.error &&
                     <div class="text-center m-5">
