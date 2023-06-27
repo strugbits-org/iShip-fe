@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { alertActions } from '_store';
 import { history, fetchWrapper } from '_helpers';
+// import { useSelector } from 'react-redux';
 
 // create slice
 
@@ -22,6 +23,7 @@ function createInitialState() {
     return {
         // initialize state from local storage to enable user to stay logged in
         value: JSON.parse(localStorage.getItem('auth'))
+        // value: getAuth()
     }
 }
 
@@ -55,7 +57,7 @@ function createExtraActions() {
 
                     // set auth user in redux state
                     dispatch(authActions.setAuth(user));
-
+                    console.log("user",user);
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('auth', JSON.stringify(user));
 
