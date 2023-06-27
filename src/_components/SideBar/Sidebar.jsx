@@ -21,7 +21,7 @@ function Sidebar() {
     const [isAdmin, setIsAdmin] = useState(false);
     useEffect(() => {
         const role = auth?.user?.email
-        role === "stephen.mk091@gmail.com" ? setIsAdmin(true) : setIsAdmin(false)
+        role === "stephen@gmail.com" ? setIsAdmin(true) : setIsAdmin(false)
     }, [auth])
 
     //TOGGLE sidebar component
