@@ -1,29 +1,36 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Logout, Merchants, Orders } from '../../_assets/icons/icon';
-import { useState } from 'react';
+
+import { useState, useEffect } from 'react';
 import './Sidebar.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import { authActions, mobileActions } from '_store';
 
 
 export { Sidebar };
 
 function Sidebar() {
-    const auth = useSelector(x => x.auth.value);
     const dispatch = useDispatch();
     const logout = () => dispatch(authActions.logout());
-
     const mobile = useSelector(x => x.mobile.value)
+    //CHECK ADMIN
+    const auth = useSelector(x => x.auth.value);
+    const [isAdmin, setIsAdmin] = useState(false);
+    useEffect(() => {
+        const role = auth?.user?.email
+        role === "stephen.mk091@gmail.com" ? setIsAdmin(true) : setIsAdmin(false)
+    }, [auth])
 
     //TOGGLE sidebar component
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => {
         setSidebar(!sidebar);
         !sidebar ?
-        dispatch(mobileActions.closeSideBar("90px"))
-        :dispatch(mobileActions.closeSideBar("290px"))
+            dispatch(mobileActions.closeSideBar("90px"))
+            : dispatch(mobileActions.closeSideBar("290px"))
     }
 
 
@@ -67,12 +74,20 @@ function Sidebar() {
                                 <span className='sidebar_link'> Order</span>
                             </NavLink>
                         </li>
-                        <li className='menu_links'>
+                        {isAdmin && <li className='menu_links'>
                             <NavLink to="/users" className="menu_item_wrapper">
                                 <span className='_iconHover'>
                                     <Merchants />
                                 </span>
                                 <span className='sidebar_link'> Merchants</span>
+                            </NavLink>
+                        </li>}
+                        <li className='menu_links'>
+                            <NavLink to="/location" className="menu_item_wrapper">
+                                <span className='_iconHover'>
+                                    <PlaceOutlinedIcon />
+                                </span>
+                                <span className='sidebar_link'> Pickup Location</span>
                             </NavLink>
                         </li>
                     </ul>
