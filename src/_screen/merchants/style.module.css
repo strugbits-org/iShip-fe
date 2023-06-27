@@ -190,16 +190,26 @@
         width: 400px;
     }
 }
-
+@media (max-width: 1024px){
+    .sections {
+        margin: 0 !important;
+    }
+}
 /* Mobile */
 @media(max-width: 768px) {
+    .main_container_edit{
+        padding: 60px 0px;
+    }
+    .title{
+        font-size: 20px;
+    }
     .add_search {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
     .title{
-        font-size: 28px;
+        font-size: 24px;
     }
     .search {
         width: 100%;
@@ -207,6 +217,9 @@
 
     .add_merchant {
         width: 100%;
+    }
+    .closeBtn{
+        font-size: 30px;
     }
 }
 
