@@ -1,0 +1,236 @@
+.sections {
+    background-color: #F5F5F5;
+    min-height: calc(100vh - 100px);
+
+}
+
+.sections_edit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_container_edit {
+    max-width: 700px;
+    flex-direction: column;
+    padding: 70px 40px;
+    width: 90%;
+    margin: auto;
+}
+
+.main_container {
+    flex-direction: column;
+    padding: 40px 0;
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 24px;
+    /* text-align: center; */
+    font-family: AxiformaRegular;
+    color: var(--textDard);
+    width: 100%;
+}
+
+.add_location {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    color: var(--textLight);
+    background-color: var(--primaryColor);
+    align-items: center;
+    width: 240px;
+    height: 45px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.link {
+    font-family: AxiformaRegular;
+    font-size: 14px;
+}
+
+.add_search {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.search {
+    height: 58px;
+    position: relative;
+    background-color: var(--textLight);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 330px;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+    border-bottom: none;
+}
+
+.search_icons {
+    color: var(--textLight);
+    
+}
+.container_Notfound{
+    height: 500px;
+    padding: 40px;
+}
+.notFound{
+    background: url("../../_assets/images/no-result.png") no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+}
+.serach_box {
+    height: 40px;
+    width: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    background-color: var(--primaryColor);
+}
+
+.notification {
+    font-size: 14px;
+    font-family: AxiformaRegular;
+    color: rgb(197, 48, 48);
+}
+
+.theme_btn_secondary {
+    width: 100%;
+    background-color: var(--textLight);
+    border: 1px solid var(--primaryColor);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var(--textDard);
+    font-family: AxiformaMedium;
+    text-decoration: none;
+}
+
+.closeBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.col_btn {
+    text-decoration: none;
+    /* padding: 12px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--primaryColor);
+    color: var(--textLight);
+    font-family: AxiformaRegular;
+    font-size: 14px;
+    width: 100%;
+    max-width: 96px;
+    height: 32px;
+}
+
+
+.data {
+    overflow: scroll;
+    min-height: 500px;
+}
+
+.modelBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow-y: scroll;
+    height: auto;
+    max-height: 90vh;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 650px;
+    border-radius: 15px;
+    background-color: var(--textLight);
+    padding: 4px;
+}
+.modelBox::-webkit-scrollbar {
+    display: none;
+}
+
+/* Laptop  */
+@media(max-width: 1200px) {
+    /* .head {
+        flex-direction: column;
+        align-items: flex-start;
+    } */
+
+    /* .add_search {
+        justify-content: flex-start;
+    } */
+
+    .search {
+        width: 100%;
+    }
+
+    .add_location {
+        width: 400px;
+    }
+}
+
+@media (max-width: 1024px){
+    .sections {
+        margin: 0 !important;
+    }
+}
+
+/* Mobile */
+@media(max-width: 768px) {
+     .head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    } 
+.main_container_edit{
+    padding: 60px 0px;
+}
+    .add_search {
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .title{
+        font-size: 24px;
+    }
+    .search {
+        width: 100%;
+    }
+
+    .add_location {
+        width: 100%;
+    }
+    .closeBtn{
+        font-size: 30px;
+    }
+}
+
+
