@@ -19,7 +19,7 @@ function Reset() {
     const dispatch = useDispatch();
     const [searchParams] = useSearchParams();
     let auth = searchParams.get('authorization')
-    console.log("authorization", auth);
+    // console.log("authorization", auth);
 
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
