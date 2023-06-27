@@ -61,7 +61,7 @@ Fade.propTypes = {
 //<Model Styling/>
 
 function Orders() {
-    const mobile = useSelector(x => x.mobile.value)
+    const mobile = useSelector(x => x.mobile.value) 
     const [rows, setRow] = useState([])
     const [editorder, setEditOrder] = useState('');
     const [open, setOpen] = useState(false);
@@ -228,7 +228,7 @@ function Orders() {
                     <h6 className={Style.filter_title}>Filters</h6>
                     <hr style={{ borderColor: "#dcdcdc", opacity: .3 }} />
                     <div className={Style.search_form}>
-                        <form onSubmit={handleSubmit}>
+                        <form className={Style.form_filter} onSubmit={handleSubmit}>
                             <div className={Style.filter_inputWrapper}>
                                 <label className={Style.filter_label}>Search</label>
                                 <input onChange={handleChange} value={filter.name}
@@ -250,7 +250,7 @@ function Orders() {
                                 <label className={Style.filter_label}>Created At</label>
                                 <input onChange={handleChange} name="createdAt" className={Style.filter_input} type='date' placeholder='Order No, Store, Merchant, etc.' />
                             </div>
-                            <div className={Style.filter_buttonwrapper}>
+                            <div className={Style.filter_inputWrapper}>
                                 <button type="submit" className={Style.filter_button} >Filter</button>
                             </div>
                         </form>
