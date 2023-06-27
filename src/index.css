@@ -97,7 +97,17 @@ ul li {
 .theme_input:focus {
     border-color: var(--primaryColor);
 }
-
+.input_location{
+    border: 1px solid rgb(157 157 157 / 50%);
+    border-radius: 5px;
+    background-color: var(--textLight);
+    color: var(--textHeadingBlack);
+    font-family: AxiformaMedium;
+    font-size: 16px;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+}
 .is-invalid {
     border-color: #dc3545;
     padding-right: calc(1.5em + 0.75rem);
@@ -188,12 +198,12 @@ ul li {
     font-family: AxiformaRegular;
 
 }
-.Ontheway{
+.Ontheway, .Active, .On{
     background-color: #C8FFC7;
     border: 1px solid #5EAE5C;
     color: #5EAE5C;
 }
-.Cancelled{
+.Cancelled, .Inactive{
     background-color: #FFC7C7;
     border: 1px solid #AE5C5C;
     color: #AE5C5C;
