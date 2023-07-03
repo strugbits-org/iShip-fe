@@ -18,7 +18,7 @@ function App() {
     const [isAdmin, setIsAdmin] = useState(false);
     useEffect(() => {
         const role = auth?.user?.email
-        role === "stephen@gmail.com" ? setIsAdmin(true) : setIsAdmin(false)
+        role === "stephen@gmail.com" ? setIsAdmin(false) : setIsAdmin(true)
     }, [auth])
 
 
