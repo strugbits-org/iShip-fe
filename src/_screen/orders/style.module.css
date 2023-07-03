@@ -11,7 +11,7 @@
 .main_container{
     display: flex;
     width: 100%;
-    gap: 20px;
+    /* gap: 20px;    */
 }
 .content_wrapper{
     width: 75%;
@@ -66,6 +66,7 @@
     border-radius: 10px;
     padding: 25px 0;
     margin-top: 65px;
+    margin-right: 20px;
     height: max-content;
 }
 .filter_title{
@@ -258,12 +259,12 @@
 
     .main_container{
         flex-direction: column;
-        gap: 50px;
     }
     .filters_wrapper{
         width: 100%;
         max-width: 100%;
         margin: 0;
+        margin-bottom: 50px;
     }
     .content_wrapper{
         width: 100%;
