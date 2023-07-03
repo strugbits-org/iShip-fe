@@ -255,13 +255,15 @@
 
 
 @media(max-width: 1400px) {
+
     .main_container{
         flex-direction: column;
-        gap: 50px   ;
+        gap: 50px;
     }
     .filters_wrapper{
         width: 100%;
         max-width: 100%;
+        margin: 0;
     }
     .content_wrapper{
         width: 100%;
@@ -285,12 +287,19 @@
 }
 
 @media (max-width: 1024px){
+    .main_container{
+        width: 90%;
+        margin: auto;
+    }
     .order_mainContainer {
-    margin: 40px 0 0 0 !important;
+    margin: 100px 0 0 0 !important;
     }
     .form_filter > div{
         width: 48%;
         align-items: flex-start;
+    }
+    .order_mainContainer{
+        padding: 40px 0;
     }
 }
 
@@ -301,5 +310,24 @@
     }
     .filter_input{
         max-width: 100%;
+        height: 36px;
     }
+    .head{
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .actions{
+        justify-content: flex-start;
+    }
+    .filter_label, .filter_input{
+        font-size: 13px !important;
+    }
+    .filter_button{
+        height: 42px;
+        font-size: 15px;
+        margin: 0;
+    }
+  
 }
