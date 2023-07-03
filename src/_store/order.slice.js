@@ -33,6 +33,7 @@ function createExtraActions() {
         importOrder: importOrder(),
         getAll: getAll(),
         update: update(),
+        importShopify: importShopify(),
     };
 
 
@@ -55,6 +56,18 @@ function createExtraActions() {
             `${name}/update`,
             async function ({ id, obj }) {
                 await fetchWrapper.patch(`https://iship.herokuapp.com/`, obj);
+            }
+        );
+    }
+    function importShopify() {
+        return createAsyncThunk(
+            `${name}/importShopify`,
+            async (data) => {
+                // console.log("data backend", data);
+                const url = `https://${data.url}/admin/api/${data.event}/orders.json`;
+                // console.log("api", url);
+
+                await fetchWrapper.get(`${url}`)
             }
         );
     }

@@ -13,6 +13,7 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import { useSpring, animated } from '@react-spring/web';
 import { EditOrder } from './EditOrder';
+import { ImportShopify } from './ImportShopify';
 import Papa from "papaparse";
 
 export { Orders };
@@ -61,13 +62,19 @@ Fade.propTypes = {
 //<Model Styling/>
 
 function Orders() {
-    const mobile = useSelector(x => x.mobile.value) 
+    const mobile = useSelector(x => x.mobile.value)
     const [rows, setRow] = useState([])
+    const [importshopify, setImportShopify] = useState(false)
     const [editorder, setEditOrder] = useState('');
     const [open, setOpen] = useState(false);
     const [fileName, setFileName] = useState('')
     const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const handleClose = () => {
+        setOpen(false)
+        setTimeout(() => {
+            setImportShopify(false)
+        }, 1000);
+    };
 
     const changeHandler = (event) => {
         // Passing file data (event.target.files[0]) to parse using Papa.parse
@@ -224,6 +231,7 @@ function Orders() {
     return (
         <div className={Style.order_mainContainer} style={{ marginLeft: mobile ? mobile.class : "290px" }}>
             <div className={Style.main_container}>
+                <div className={Style.display}></div>
                 <div className={Style.filters_wrapper}>
                     <h6 className={Style.filter_title}>Filters</h6>
                     <hr style={{ borderColor: "#dcdcdc", opacity: .3 }} />
@@ -256,11 +264,12 @@ function Orders() {
                         </form>
                     </div>
                 </div>
+
                 <div className={Style.content_wrapper}>
                     <div className={Style.head}>
                         <h1 className={Style.title}>Orders</h1>
                         <div className={Style.actions}>
-                            <button className={Style.button_import}>
+                            <button onClick={() => { setImportShopify(true); handleOpen() }} className={Style.button_import}>
                                 <File />Import Shopify
                             </button>
                             <div>
@@ -323,7 +332,8 @@ function Orders() {
                 <Fade in={open}>
                     <Box className={Style.modelBox}>
                         <CloseIcon className={Style.closeBtn} onClick={handleClose} />
-                        <EditOrder handleClose={handleClose} id={editorder ? editorder.id : ""} />
+                        {importshopify ? <ImportShopify  handleClose={handleClose} /> :
+                            <EditOrder handleClose={handleClose} id={editorder ? editorder.id : ""} />}
                     </Box>
                 </Fade>
             </Modal>
